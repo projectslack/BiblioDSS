@@ -1,0 +1,157 @@
+
+using System;
+using System.Text;
+using DSSGenNHibernate.CEN.BibliotecaENIAC;
+using NHibernate;
+using NHibernate.Cfg;
+using NHibernate.Criterion;
+using NHibernate.Exceptions;
+using DSSGenNHibernate.EN.BibliotecaENIAC;
+using DSSGenNHibernate.Exceptions;
+
+namespace DSSGenNHibernate.CAD.BibliotecaENIAC
+{
+public partial class BibliografiaRecomendadaCAD : BasicCAD, IBibliografiaRecomendadaCAD
+{
+public BibliografiaRecomendadaCAD() : base ()
+{
+}
+
+public BibliografiaRecomendadaCAD(ISession sessionAux) : base (sessionAux)
+{
+}
+
+
+
+public BibliografiaRecomendadaEN ReadOIDDefault (int idSocioObras)
+{
+        BibliografiaRecomendadaEN bibliografiaRecomendadaEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                bibliografiaRecomendadaEN = (BibliografiaRecomendadaEN)session.Get (typeof(BibliografiaRecomendadaEN), idSocioObras);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in BibliografiaRecomendadaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return bibliografiaRecomendadaEN;
+}
+
+
+public int New_ (BibliografiaRecomendadaEN bibliografiaRecomendada)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+
+                session.Save (bibliografiaRecomendada);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in BibliografiaRecomendadaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return bibliografiaRecomendada.IdSocioObras;
+}
+
+public void Modify (BibliografiaRecomendadaEN bibliografiaRecomendada)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                BibliografiaRecomendadaEN bibliografiaRecomendadaEN = (BibliografiaRecomendadaEN)session.Load (typeof(BibliografiaRecomendadaEN), bibliografiaRecomendada.IdSocioObras);
+                session.Update (bibliografiaRecomendadaEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in BibliografiaRecomendadaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void Destroy (int idSocioObras)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                BibliografiaRecomendadaEN bibliografiaRecomendadaEN = (BibliografiaRecomendadaEN)session.Load (typeof(BibliografiaRecomendadaEN), idSocioObras);
+                session.Delete (bibliografiaRecomendadaEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in BibliografiaRecomendadaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public System.Collections.Generic.IList<BibliografiaRecomendadaEN> Listarrecomendadas (int first, int size)
+{
+        System.Collections.Generic.IList<BibliografiaRecomendadaEN> result = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                if (size > 0)
+                        result = session.CreateCriteria (typeof(BibliografiaRecomendadaEN)).
+                                 SetFirstResult (first).SetMaxResults (size).List<BibliografiaRecomendadaEN>();
+                else
+                        result = session.CreateCriteria (typeof(BibliografiaRecomendadaEN)).List<BibliografiaRecomendadaEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in BibliografiaRecomendadaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+}
+}
