@@ -1,0 +1,20 @@
+1	cambiado el ooh4ria
+
+2	los metodos  BuscaPorAutor BuscaPorTematica BuscaPorNombre estan implementados
+	ahora en ObraCad.cs con sus respectivas consutas realizas (revisad si estas consultas son correctas)
+
+3	metodo logearse de Usuario terminada (revisar)
+
+4	ObraCen operacion estaReservada	terminada (revisar)
+
+5	ObraCen operacion estaPrestada terminada (revisar)
+
+6	UsuarioCen operacion HacerPrestamo terminada (revisar creo que faltaria decir que parametros necesito para prestar)
+
+7	UsuarioCen operacion HacerReserva terminada (revisar creo que faltaria decir que parametros necesito para reservar)
+
+8	PrestamoCen operacion renovarPrestamo terminada (revisar)
+
+9	listarobrasCen sin hacer
+
+10	revisar todo lo anterior y ver si falta algo
