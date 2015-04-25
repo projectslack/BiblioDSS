@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="BibliotecaENIACGenNHibernate"
+		                   namespace="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC">
+			<class name="ObraEN" table="[Obra]">
+				  	
+						<id name="Isbn" column="[IsbnObra]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Nombre" type="string"> 
+						<column name="[nombre]"  not-null="true"/>
+					</property>
+					<property name="Ejemplares" type="short"> 
+						<column name="[ejemplares]"  not-null="true"/>
+					</property>
+					<property name="Autor" type="string"> 
+						<column name="[autor]"  not-null="true"/>
+					</property>
+					<property name="Tematica" type="string"> 
+						<column name="[tematica]"  not-null="true"/>
+					</property>
+					<property name="Paginas" type="short"> 
+						<column name="[paginas]"  not-null="true"/>
+					</property>
+					<property name="Prestado" type="boolean"> 
+						<column name="[prestado]"  not-null="true"/>
+					</property>
+					<property name="Reservado" type="boolean"> 
+						<column name="[reservado]"  not-null="true"/>
+					</property>
+			
+			
+		  			
+						<bag name="Tieneobras" table="[obra_bibliografiaRecomendada]"  >
+							<key>
+									<column name="[FK_IsbnObra_idObra]"/>
+							</key>
+      						<many-to-many class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.BibliografiaRecomendadaEN">
+									<column name="[FK_idSocioObrasBibliografiaRecomendada_idBibliografiaRecomendada]"/>
+      						</many-to-many>
+    					</bag>
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Reserva" table="[obra_reserva]"  >
+							<key>
+									<column name="[FK_IsbnObra_idObra]"/>
+							</key>
+      						<many-to-many class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN">
+									<column name="[FK_idReservaReserva_idReserva]"/>
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Prestamo" >
+							<key>
+								<column name="[FK_IsbnObra_idObra]"/>
+					      	</key>
+							<one-to-many class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN"/>
+					    </bag>
+					
+			
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="ObraENReadAllHQL">from ObraEN</query>
+		  <query name="ObraENbuscaPorNombreHQL"><![CDATA[FROM ObraEN]]></query>
+		  <query name="ObraENbuscaPorAutorHQL"><![CDATA[FROM ObraEN]]></query>
+		  <query name="ObraENbuscaPorTematicaHQL"><![CDATA[FROM ObraEN]]></query>
+		</hibernate-mapping>
+	
