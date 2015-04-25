@@ -1,11 +1,11 @@
-1	Cambiado el ooh4ria (Reestructurado el modelo gr·fico, falta implementar lo que indico a continuaciÛn, que a mi no me deja)
+1	Cambiado el ooh4ria (Reestructurado el modelo gr√°fico, falta implementar lo que indico a continuaci√≥n, que a mi no me deja)
 
-2	Est·n implementados los mÈtodos:
+2	Est√°n implementados los m√©todos:
 	- BuscaPorAutor
 	- BuscaPorTematica
 	- BuscaPorNombre
 
-3	MÈtodo logearse de Usuario terminado (revisar)
+3	M√©todo logearse de Usuario terminado (revisar)
 
 4	ObraCen operacion estaReservada	terminada (revisar)
 
@@ -22,9 +22,9 @@
 10	Revisar todo lo anterior y ver si falta algo
 
 11	Falta?:
-	- Editar BibliografÌaRecomendada en modelo gr·fico e implementarlo sus mÈtodos en VisualStudio
-	- Revisar ObraCad.cs y sus mÈtodos
-	- Faltan mÈtodos que devuelven listas?
+	- Editar Bibliograf√≠aRecomendada en modelo gr√°fico e implementarlo sus m√©todos en VisualStudio
+	- Revisar ObraCad.cs y sus m√©todos
+	- Faltan m√©todos que devuelven listas?
 
-
-PD: Pone que me queda un dÌa restante para activar la imagen... ¨¨
+PD1: Pone que me queda un d√≠a restante para activar la imagen... ¬¨¬¨
+PD2: Compa√±eros, necesito ayuda lo antes posible con el modelo gr√°fico...
