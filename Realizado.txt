@@ -1,9 +1,11 @@
-1	cambiado el ooh4ria
+1	Cambiado el ooh4ria (Reestructurado el modelo gráfico, falta implementar lo que indico a continuación, que a mi no me deja)
 
-2	los metodos  BuscaPorAutor BuscaPorTematica BuscaPorNombre estan implementados
-	ahora en ObraCad.cs con sus respectivas consutas realizas (revisad si estas consultas son correctas)
+2	Están implementados los métodos:
+	- BuscaPorAutor
+	- BuscaPorTematica
+	- BuscaPorNombre
 
-3	metodo logearse de Usuario terminada (revisar)
+3	Método logearse de Usuario terminado (revisar)
 
 4	ObraCen operacion estaReservada	terminada (revisar)
 
@@ -15,6 +17,14 @@
 
 8	PrestamoCen operacion renovarPrestamo terminada (revisar)
 
-9	listarobrasCen sin hacer
+9	ListarobrasCen sin hacer
 
-10	revisar todo lo anterior y ver si falta algo
+10	Revisar todo lo anterior y ver si falta algo
+
+11	Falta?:
+	- Editar BibliografíaRecomendada en modelo gráfico e implementarlo sus métodos en VisualStudio
+	- Revisar ObraCad.cs y sus métodos
+	- Faltan métodos que devuelven listas?
+
+
+PD: Pone que me queda un día restante para activar la imagen... ¬¬
