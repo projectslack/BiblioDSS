@@ -31,5 +31,6 @@
 		  </class>
 		  
 		  <query name="TematicaENReadAllHQL">from TematicaEN</query>
+		  <query name="TematicaENbuscarTematicaHQL"><![CDATA[FROM TematicaEN]]></query>
 		</hibernate-mapping>
 	

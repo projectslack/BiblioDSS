@@ -99,9 +99,6 @@ public void Modify (ObraEN obra)
                 obraEN.Nombre = obra.Nombre;
 
 
-                obraEN.Ejemplares = obra.Ejemplares;
-
-
                 obraEN.Paginas = obra.Paginas;
 
 

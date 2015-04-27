@@ -63,5 +63,10 @@ public void Destroy (string nombre)
 {
         _ITematicaCAD.Destroy (nombre);
 }
+
+public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> BuscarTematica (System.Collections.Generic.IList<string> tematica)
+{
+        return _ITematicaCAD.BuscarTematica (tematica);
+}
 }
 }

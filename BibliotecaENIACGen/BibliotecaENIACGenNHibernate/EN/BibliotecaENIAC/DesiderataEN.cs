@@ -41,6 +41,18 @@ private short año;
 
 private BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario;
 
+/**
+ *
+ */
+
+private bool aceptada;
+
+/**
+ *
+ */
+
+private BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PASEN pAS;
+
 
 
 
@@ -75,6 +87,16 @@ public virtual BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN Usuario
 }
 
 
+public virtual bool Aceptada {
+        get { return aceptada; } set { aceptada = value;  }
+}
+
+
+public virtual BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PASEN PAS {
+        get { return pAS; } set { pAS = value;  }
+}
+
+
 
 
 
@@ -84,18 +106,18 @@ public DesiderataEN()
 
 
 
-public DesiderataEN(int id, string autor, string titulo, string editorial, short año, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario)
+public DesiderataEN(int id, string autor, string titulo, string editorial, short año, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario, bool aceptada, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PASEN pAS)
 {
-        this.init (id, autor, titulo, editorial, año, usuario);
+        this.init (id, autor, titulo, editorial, año, usuario, aceptada, pAS);
 }
 
 
 public DesiderataEN(DesiderataEN desiderata)
 {
-        this.init (desiderata.Id, desiderata.Autor, desiderata.Titulo, desiderata.Editorial, desiderata.Año, desiderata.Usuario);
+        this.init (desiderata.Id, desiderata.Autor, desiderata.Titulo, desiderata.Editorial, desiderata.Año, desiderata.Usuario, desiderata.Aceptada, desiderata.PAS);
 }
 
-private void init (int id, string autor, string titulo, string editorial, short año, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario)
+private void init (int id, string autor, string titulo, string editorial, short año, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario, bool aceptada, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PASEN pAS)
 {
         this.Id = id;
 
@@ -109,6 +131,10 @@ private void init (int id, string autor, string titulo, string editorial, short 
         this.Año = año;
 
         this.Usuario = usuario;
+
+        this.Aceptada = aceptada;
+
+        this.PAS = pAS;
 }
 
 public override bool Equals (object obj)

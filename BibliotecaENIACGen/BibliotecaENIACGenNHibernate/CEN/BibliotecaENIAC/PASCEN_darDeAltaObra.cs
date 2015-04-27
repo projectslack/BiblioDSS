@@ -14,7 +14,7 @@ namespace BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC
 {
 public partial class PASCEN
 {
-public BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN DarDeAltaObra (string id, string p_nombre, short p_ejemplares, short p_paginas, int p_anyo, string imagen)
+public BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN DarDeAltaObra (string id, string p_nombre, short p_paginas, short p_anyo, string imagen, string pAS)
 {
         /*PROTECTED REGION ID(BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC_PAS_darDeAltaObra) ENABLED START*/
 

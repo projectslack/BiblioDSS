@@ -31,5 +31,6 @@
 		  </class>
 		  
 		  <query name="AutorENReadAllHQL">from AutorEN</query>
+		  <query name="AutorENbuscarAutorHQL"><![CDATA[FROM AutorEN]]></query>
 		</hibernate-mapping>
 	

@@ -16,7 +16,7 @@ void Modify (PrestamoEN prestamo);
 void Destroy (string idPrestamo);
 
 
-System.Collections.Generic.IList<PrestamoEN> VisualizarPrestamo (int first, int size);
+System.Collections.Generic.IList<PrestamoEN> ListarPrestamos (int first, int size);
 
 
 

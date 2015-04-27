@@ -21,12 +21,6 @@ private string nombre;
  *
  */
 
-private short ejemplares;
-
-/**
- *
- */
-
 private short paginas;
 
 /**
@@ -79,11 +73,6 @@ public virtual string Nombre {
 }
 
 
-public virtual short Ejemplares {
-        get { return ejemplares; } set { ejemplares = value;  }
-}
-
-
 public virtual short Paginas {
         get { return paginas; } set { paginas = value;  }
 }
@@ -132,25 +121,23 @@ public ObraEN()
 
 
 
-public ObraEN(string isbn, string nombre, short ejemplares, short paginas, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN> reserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> escrita, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> tematica, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN> ejemplar, short anyo, string imagen)
+public ObraEN(string isbn, string nombre, short paginas, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN> reserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> escrita, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> tematica, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN> ejemplar, short anyo, string imagen)
 {
-        this.init (isbn, nombre, ejemplares, paginas, reserva, escrita, tematica, ejemplar, anyo, imagen);
+        this.init (isbn, nombre, paginas, reserva, escrita, tematica, ejemplar, anyo, imagen);
 }
 
 
 public ObraEN(ObraEN obra)
 {
-        this.init (obra.Isbn, obra.Nombre, obra.Ejemplares, obra.Paginas, obra.Reserva, obra.Escrita, obra.Tematica, obra.Ejemplar, obra.Anyo, obra.Imagen);
+        this.init (obra.Isbn, obra.Nombre, obra.Paginas, obra.Reserva, obra.Escrita, obra.Tematica, obra.Ejemplar, obra.Anyo, obra.Imagen);
 }
 
-private void init (string isbn, string nombre, short ejemplares, short paginas, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN> reserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> escrita, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> tematica, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN> ejemplar, short anyo, string imagen)
+private void init (string isbn, string nombre, short paginas, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN> reserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> escrita, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> tematica, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN> ejemplar, short anyo, string imagen)
 {
         this.Isbn = Isbn;
 
 
         this.Nombre = nombre;
-
-        this.Ejemplares = ejemplares;
 
         this.Paginas = paginas;
 

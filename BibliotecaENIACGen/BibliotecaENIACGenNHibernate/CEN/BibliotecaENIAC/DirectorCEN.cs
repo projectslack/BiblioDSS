@@ -32,13 +32,6 @@ public IDirectorCAD get_IDirectorCAD ()
         return this._IDirectorCAD;
 }
 
-public System.Collections.Generic.IList<DirectorEN> ListarDirectores (int first, int size)
-{
-        System.Collections.Generic.IList<DirectorEN> list = null;
-
-        list = _IDirectorCAD.ListarDirectores (first, size);
-        return list;
-}
 public string New_ (string p_DNI, string p_nombre, string p_apellidos, short p_telefono, string p_correo, Nullable<DateTime> p_penalizacion, string p_contrasenya, bool p_logeado)
 {
         DirectorEN directorEN = null;

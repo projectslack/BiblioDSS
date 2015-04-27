@@ -123,5 +123,36 @@ public void Destroy (string nombre)
                 SessionClose ();
         }
 }
+
+public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> BuscarTematica (System.Collections.Generic.IList<string> tematica)
+{
+        System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM TematicaEN self where FROM TematicaEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("TematicaENbuscarTematicaHQL");
+                query.SetParameter ("tematica", tematica);
+
+                result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BibliotecaENIACGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in TematicaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

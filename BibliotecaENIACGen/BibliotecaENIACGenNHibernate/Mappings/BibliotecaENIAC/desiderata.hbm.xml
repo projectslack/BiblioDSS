@@ -19,6 +19,9 @@
 					<property name="Año" type="short"> 
 						<column name="[año]"  not-null="true"/>
 					</property>
+					<property name="Aceptada" type="boolean"> 
+						<column name="[aceptada]"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -30,6 +33,15 @@
 								<column name="[FK_DNIUsuario_idUsuario]"/>
 						</many-to-one>
 											 					
+			
+			
+		  			
+						<many-to-one name="PAS" class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PASEN" >	
+								<column name="[FK_DNIUsuario_idPAS]"/>
+						</many-to-one>
+											 					
+					
+					
 					
 					
 					
@@ -40,5 +52,6 @@
 		  </class>
 		  
 		  <query name="DesiderataENReadAllHQL">from DesiderataEN</query>
+		  <query name="DesiderataENlistaDesideratasPendientesHQL"><![CDATA[FROM DesiderataEN]]></query>
 		</hibernate-mapping>
 	

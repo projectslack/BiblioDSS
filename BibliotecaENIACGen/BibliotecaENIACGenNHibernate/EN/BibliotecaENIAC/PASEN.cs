@@ -13,6 +13,12 @@ public partial class PASEN              :                           BibliotecaEN
 
 private BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DirectorEN director;
 
+/**
+ *
+ */
+
+private System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN> acepta;
+
 
 
 
@@ -22,32 +28,40 @@ public virtual BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DirectorEN Direct
 }
 
 
+public virtual System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN> Acepta {
+        get { return acepta; } set { acepta = value;  }
+}
+
+
 
 
 
 public PASEN() : base ()
 {
+        acepta = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN>();
 }
 
 
 
-public PASEN(string dNI, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DirectorEN director, string nombre, string apellidos, short telefono, string correo, Nullable<DateTime> penalizacion, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.BibliografiaRecomendadaEN> recomienda, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN> reserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN> prestamo, string contrasenya, bool logeado, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN> desiderata)
+public PASEN(string dNI, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DirectorEN director, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN> acepta, string nombre, string apellidos, short telefono, string correo, Nullable<DateTime> penalizacion, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.BibliografiaRecomendadaEN> recomienda, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN> reserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN> prestamo, string contrasenya, bool logeado, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN> desiderata)
 {
-        this.init (dNI, director, nombre, apellidos, telefono, correo, penalizacion, recomienda, reserva, prestamo, contrasenya, logeado, desiderata);
+        this.init (dNI, director, acepta, nombre, apellidos, telefono, correo, penalizacion, recomienda, reserva, prestamo, contrasenya, logeado, desiderata);
 }
 
 
 public PASEN(PASEN pAS)
 {
-        this.init (pAS.DNI, pAS.Director, pAS.Nombre, pAS.Apellidos, pAS.Telefono, pAS.Correo, pAS.Penalizacion, pAS.Recomienda, pAS.Reserva, pAS.Prestamo, pAS.Contrasenya, pAS.Logeado, pAS.Desiderata);
+        this.init (pAS.DNI, pAS.Director, pAS.Acepta, pAS.Nombre, pAS.Apellidos, pAS.Telefono, pAS.Correo, pAS.Penalizacion, pAS.Recomienda, pAS.Reserva, pAS.Prestamo, pAS.Contrasenya, pAS.Logeado, pAS.Desiderata);
 }
 
-private void init (string dNI, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DirectorEN director, string nombre, string apellidos, short telefono, string correo, Nullable<DateTime> penalizacion, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.BibliografiaRecomendadaEN> recomienda, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN> reserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN> prestamo, string contrasenya, bool logeado, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN> desiderata)
+private void init (string dNI, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DirectorEN director, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN> acepta, string nombre, string apellidos, short telefono, string correo, Nullable<DateTime> penalizacion, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.BibliografiaRecomendadaEN> recomienda, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN> reserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN> prestamo, string contrasenya, bool logeado, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN> desiderata)
 {
         this.DNI = DNI;
 
 
         this.Director = director;
+
+        this.Acepta = acepta;
 
         this.Nombre = nombre;
 

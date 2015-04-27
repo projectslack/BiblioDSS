@@ -14,5 +14,8 @@ void Modify (AutorEN autor);
 
 
 void Destroy (string nombre);
+
+
+System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> BuscarAutor (System.Collections.Generic.IList<string> autor);
 }
 }

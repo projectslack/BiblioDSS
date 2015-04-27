@@ -14,7 +14,7 @@ namespace BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC
 {
 public partial class UsuarioCEN
 {
-public void DameBibliografiaRecomendada (string p_oid)
+public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.BibliografiaRecomendadaEN> DameBibliografiaRecomendada (string p_oid)
 {
         /*PROTECTED REGION ID(BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC_Usuario_dameBibliografiaRecomendada) ENABLED START*/
 

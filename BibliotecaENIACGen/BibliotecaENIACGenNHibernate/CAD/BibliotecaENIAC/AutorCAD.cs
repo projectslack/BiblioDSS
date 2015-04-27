@@ -123,5 +123,36 @@ public void Destroy (string nombre)
                 SessionClose ();
         }
 }
+
+public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> BuscarAutor (System.Collections.Generic.IList<string> autor)
+{
+        System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AutorEN self where FROM AutorEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AutorENbuscarAutorHQL");
+                query.SetParameter ("autor", autor);
+
+                result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BibliotecaENIACGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in AutorCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

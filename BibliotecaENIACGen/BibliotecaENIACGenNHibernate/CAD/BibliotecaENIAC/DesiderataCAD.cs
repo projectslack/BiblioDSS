@@ -100,6 +100,9 @@ public void Modify (DesiderataEN desiderata)
 
                 desiderataEN.Año = desiderata.Año;
 
+
+                desiderataEN.Aceptada = desiderata.Aceptada;
+
                 session.Update (desiderataEN);
                 SessionCommit ();
         }
@@ -152,6 +155,37 @@ public System.Collections.Generic.IList<DesiderataEN> ListaDesideratas (int firs
                                  SetFirstResult (first).SetMaxResults (size).List<DesiderataEN>();
                 else
                         result = session.CreateCriteria (typeof(DesiderataEN)).List<DesiderataEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BibliotecaENIACGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in DesiderataCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+
+public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN> ListaDesideratasPendientes (bool aceptada)
+{
+        System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM DesiderataEN self where FROM DesiderataEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("DesiderataENlistaDesideratasPendientesHQL");
+                query.SetParameter ("aceptada", aceptada);
+
+                result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN>();
                 SessionCommit ();
         }
 

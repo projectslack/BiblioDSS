@@ -63,5 +63,10 @@ public void Destroy (string nombre)
 {
         _IAutorCAD.Destroy (nombre);
 }
+
+public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> BuscarAutor (System.Collections.Generic.IList<string> autor)
+{
+        return _IAutorCAD.BuscarAutor (autor);
+}
 }
 }

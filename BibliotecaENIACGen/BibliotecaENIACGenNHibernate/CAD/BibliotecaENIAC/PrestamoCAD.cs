@@ -135,7 +135,7 @@ public void Destroy (string idPrestamo)
         }
 }
 
-public System.Collections.Generic.IList<PrestamoEN> VisualizarPrestamo (int first, int size)
+public System.Collections.Generic.IList<PrestamoEN> ListarPrestamos (int first, int size)
 {
         System.Collections.Generic.IList<PrestamoEN> result = null;
         try

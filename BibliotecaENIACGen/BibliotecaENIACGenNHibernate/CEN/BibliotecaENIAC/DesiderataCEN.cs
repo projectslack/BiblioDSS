@@ -32,7 +32,7 @@ public IDesiderataCAD get_IDesiderataCAD ()
         return this._IDesiderataCAD;
 }
 
-public int New_ (string p_autor, string p_titulo, string p_editorial, short p_año, string p_usuario)
+public int New_ (string p_autor, string p_titulo, string p_editorial, short p_año, string p_usuario, bool p_aceptada)
 {
         DesiderataEN desiderataEN = null;
         int oid;
@@ -53,13 +53,15 @@ public int New_ (string p_autor, string p_titulo, string p_editorial, short p_a�
                 desiderataEN.Usuario.DNI = p_usuario;
         }
 
+        desiderataEN.Aceptada = p_aceptada;
+
         //Call to DesiderataCAD
 
         oid = _IDesiderataCAD.New_ (desiderataEN);
         return oid;
 }
 
-public void Modify (int p_Desiderata_OID, string p_autor, string p_titulo, string p_editorial, short p_año)
+public void Modify (int p_Desiderata_OID, string p_autor, string p_titulo, string p_editorial, short p_año, bool p_aceptada)
 {
         DesiderataEN desiderataEN = null;
 
@@ -70,6 +72,7 @@ public void Modify (int p_Desiderata_OID, string p_autor, string p_titulo, strin
         desiderataEN.Titulo = p_titulo;
         desiderataEN.Editorial = p_editorial;
         desiderataEN.Año = p_año;
+        desiderataEN.Aceptada = p_aceptada;
         //Call to DesiderataCAD
 
         _IDesiderataCAD.Modify (desiderataEN);
@@ -86,6 +89,10 @@ public System.Collections.Generic.IList<DesiderataEN> ListaDesideratas (int firs
 
         list = _IDesiderataCAD.ListaDesideratas (first, size);
         return list;
+}
+public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN> ListaDesideratasPendientes (bool aceptada)
+{
+        return _IDesiderataCAD.ListaDesideratasPendientes (aceptada);
 }
 }
 }

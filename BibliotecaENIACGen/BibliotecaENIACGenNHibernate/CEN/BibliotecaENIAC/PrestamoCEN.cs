@@ -76,11 +76,11 @@ public void Destroy (string idPrestamo)
         _IPrestamoCAD.Destroy (idPrestamo);
 }
 
-public System.Collections.Generic.IList<PrestamoEN> VisualizarPrestamo (int first, int size)
+public System.Collections.Generic.IList<PrestamoEN> ListarPrestamos (int first, int size)
 {
         System.Collections.Generic.IList<PrestamoEN> list = null;
 
-        list = _IPrestamoCAD.VisualizarPrestamo (first, size);
+        list = _IPrestamoCAD.ListarPrestamos (first, size);
         return list;
 }
 public PrestamoEN BuscarPrestamo (string idPrestamo)

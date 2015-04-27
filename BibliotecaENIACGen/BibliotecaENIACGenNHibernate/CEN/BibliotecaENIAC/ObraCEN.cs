@@ -32,7 +32,7 @@ public IObraCAD get_IObraCAD ()
         return this._IObraCAD;
 }
 
-public string New_ (string p_Isbn, string p_nombre, short p_ejemplares, short p_paginas, System.Collections.Generic.IList<string> p_escrita, System.Collections.Generic.IList<string> p_tematica, short p_anyo, string p_imagen)
+public string New_ (string p_Isbn, string p_nombre, short p_paginas, System.Collections.Generic.IList<string> p_escrita, System.Collections.Generic.IList<string> p_tematica, short p_anyo, string p_imagen)
 {
         ObraEN obraEN = null;
         string oid;
@@ -42,8 +42,6 @@ public string New_ (string p_Isbn, string p_nombre, short p_ejemplares, short p_
         obraEN.Isbn = p_Isbn;
 
         obraEN.Nombre = p_nombre;
-
-        obraEN.Ejemplares = p_ejemplares;
 
         obraEN.Paginas = p_paginas;
 
@@ -85,7 +83,7 @@ public string New_ (string p_Isbn, string p_nombre, short p_ejemplares, short p_
         return oid;
 }
 
-public void Modify (string p_Obra_OID, string p_nombre, short p_ejemplares, short p_paginas, short p_anyo, string p_imagen)
+public void Modify (string p_Obra_OID, string p_nombre, short p_paginas, short p_anyo, string p_imagen)
 {
         ObraEN obraEN = null;
 
@@ -93,7 +91,6 @@ public void Modify (string p_Obra_OID, string p_nombre, short p_ejemplares, shor
         obraEN = new ObraEN ();
         obraEN.Isbn = p_Obra_OID;
         obraEN.Nombre = p_nombre;
-        obraEN.Ejemplares = p_ejemplares;
         obraEN.Paginas = p_paginas;
         obraEN.Anyo = p_anyo;
         obraEN.Imagen = p_imagen;
