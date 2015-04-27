@@ -13,12 +13,6 @@
 			
 			
 		  			
-						<many-to-one name="PAS" class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PASEN" >	
-								<column name="[FK_DNIUsuario_idPAS]"/>
-						</many-to-one>
-											 					
-			
-		  			
 						<bag name="Obra" table="[obra_reserva]" inverse="true" >
 							<key>
 									<column name="[FK_idReservaReserva_idReserva]"/>
@@ -35,7 +29,6 @@
 								<column name="[FK_DNIUsuario_idUsuario]"/>
 						</many-to-one>
 											 					
-					
 					
 					
 					

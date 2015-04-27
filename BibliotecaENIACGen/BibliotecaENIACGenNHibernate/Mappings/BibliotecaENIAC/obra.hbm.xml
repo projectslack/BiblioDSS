@@ -3,43 +3,22 @@
 		                   assembly="BibliotecaENIACGenNHibernate"
 		                   namespace="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC">
 			<class name="ObraEN" table="[Obra]">
-				  	
-						<id name="Isbn" column="[IsbnObra]" type="integer">
-							<generator class="identity"/>
-						</id>
+						<id name="Isbn" column="[IsbnObra]"/>
 					<property name="Nombre" type="string"> 
 						<column name="[nombre]"  not-null="true"/>
 					</property>
 					<property name="Ejemplares" type="short"> 
 						<column name="[ejemplares]"  not-null="true"/>
 					</property>
-					<property name="Autor" type="string"> 
-						<column name="[autor]"  not-null="true"/>
-					</property>
-					<property name="Tematica" type="string"> 
-						<column name="[tematica]"  not-null="true"/>
-					</property>
 					<property name="Paginas" type="short"> 
 						<column name="[paginas]"  not-null="true"/>
 					</property>
-					<property name="Prestado" type="boolean"> 
-						<column name="[prestado]"  not-null="true"/>
+					<property name="Anyo" type="short"> 
+						<column name="[anyo]"  not-null="true"/>
 					</property>
-					<property name="Reservado" type="boolean"> 
-						<column name="[reservado]"  not-null="true"/>
+					<property name="Imagen" type="string"> 
+						<column name="[imagen]"  not-null="true"/>
 					</property>
-			
-			
-		  			
-						<bag name="Tieneobras" table="[obra_bibliografiaRecomendada]"  >
-							<key>
-									<column name="[FK_IsbnObra_idObra]"/>
-							</key>
-      						<many-to-many class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.BibliografiaRecomendadaEN">
-									<column name="[FK_idSocioObrasBibliografiaRecomendada_idBibliografiaRecomendada]"/>
-      						</many-to-many>
-    					</bag>
-			
 			
 			
 			
@@ -56,16 +35,35 @@
     					</bag>
 			
 		  			
-						<bag name="Prestamo" >
+						<bag name="Escrita" table="[autor_obra]" inverse="true" >
+							<key>
+									<column name="[FK_IsbnObra_idObra]"/>
+							</key>
+      						<many-to-many class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN">
+									<column name="[FK_nombre_idEs escrita]"/>
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Tematica" table="[tematica_obra]" inverse="true" >
+							<key>
+									<column name="[FK_IsbnObra_idObra]"/>
+							</key>
+      						<many-to-many class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN">
+									<column name="[FK_nombre_idTematica]"/>
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Ejemplar" >
 							<key>
 								<column name="[FK_IsbnObra_idObra]"/>
 					      	</key>
-							<one-to-many class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN"/>
+							<one-to-many class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN"/>
 					    </bag>
 					
 			
 			
-					
 					
 					
 					

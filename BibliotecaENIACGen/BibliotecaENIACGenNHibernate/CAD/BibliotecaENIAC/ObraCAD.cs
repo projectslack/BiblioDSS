@@ -23,7 +23,7 @@ public ObraCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public ObraEN ReadOIDDefault (int Isbn)
+public ObraEN ReadOIDDefault (string Isbn)
 {
         ObraEN obraEN = null;
 
@@ -51,11 +51,23 @@ public ObraEN ReadOIDDefault (int Isbn)
 }
 
 
-public int New_ (ObraEN obra)
+public string New_ (ObraEN obra)
 {
         try
         {
                 SessionInitializeTransaction ();
+                if (obra.Escrita != null) {
+                        for (int i = 0; i < obra.Escrita.Count; i++) {
+                                obra.Escrita [i] = (BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN)session.Load (typeof(BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN), obra.Escrita [i].Nombre);
+                                obra.Escrita [i].Escribe.Add (obra);
+                        }
+                }
+                if (obra.Tematica != null) {
+                        for (int i = 0; i < obra.Tematica.Count; i++) {
+                                obra.Tematica [i] = (BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN)session.Load (typeof(BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN), obra.Tematica [i].Nombre);
+                                obra.Tematica [i].Obra.Add (obra);
+                        }
+                }
 
                 session.Save (obra);
                 SessionCommit ();
@@ -90,19 +102,13 @@ public void Modify (ObraEN obra)
                 obraEN.Ejemplares = obra.Ejemplares;
 
 
-                obraEN.Autor = obra.Autor;
-
-
-                obraEN.Tematica = obra.Tematica;
-
-
                 obraEN.Paginas = obra.Paginas;
 
 
-                obraEN.Prestado = obra.Prestado;
+                obraEN.Anyo = obra.Anyo;
 
 
-                obraEN.Reservado = obra.Reservado;
+                obraEN.Imagen = obra.Imagen;
 
                 session.Update (obraEN);
                 SessionCommit ();
@@ -121,7 +127,7 @@ public void Modify (ObraEN obra)
                 SessionClose ();
         }
 }
-public void Destroy (int Isbn)
+public void Destroy (string Isbn)
 {
         try
         {
@@ -145,7 +151,7 @@ public void Destroy (int Isbn)
         }
 }
 
-public System.Collections.Generic.IList<ObraEN> DameObras (int first, int size)
+public System.Collections.Generic.IList<ObraEN> ListarObras (int first, int size)
 {
         System.Collections.Generic.IList<ObraEN> result = null;
         try
@@ -175,7 +181,7 @@ public System.Collections.Generic.IList<ObraEN> DameObras (int first, int size)
         return result;
 }
 
-public ObraEN BuscaPorId (int Isbn)
+public ObraEN BuscaPorId (string Isbn)
 {
         ObraEN obraEN = null;
 

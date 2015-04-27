@@ -32,7 +32,7 @@ public IReservaCAD get_IReservaCAD ()
         return this._IReservaCAD;
 }
 
-public string New_ (string p_idReserva, Nullable<DateTime> p_fechaVencimiento, Nullable<DateTime> p_fechaInicio)
+public string New_ (string p_idReserva, Nullable<DateTime> p_fechaVencimiento, Nullable<DateTime> p_fechaInicio, string p_usuario)
 {
         ReservaEN reservaEN = null;
         string oid;
@@ -44,6 +44,12 @@ public string New_ (string p_idReserva, Nullable<DateTime> p_fechaVencimiento, N
         reservaEN.FechaVencimiento = p_fechaVencimiento;
 
         reservaEN.FechaInicio = p_fechaInicio;
+
+
+        if (p_usuario != null) {
+                reservaEN.Usuario = new BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN ();
+                reservaEN.Usuario.DNI = p_usuario;
+        }
 
         //Call to ReservaCAD
 

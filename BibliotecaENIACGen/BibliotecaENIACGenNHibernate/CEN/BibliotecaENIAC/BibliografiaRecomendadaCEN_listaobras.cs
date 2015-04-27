@@ -1,3 +1,4 @@
+
 using System;
 using System.Text;
 
@@ -18,7 +19,7 @@ public void Listaobras (int p_oid)
         /*PROTECTED REGION ID(BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC_BibliografiaRecomendada_listaobras) ENABLED START*/
 
         // Write here your custom code...
-        // Hay que a asegurarnos de que devuelve una lista y no lanza una excepción en el acceso al CAD.
+        // Hay que a asegurarnos de que devuelve una lista y no lanza una excepciï¿½n en el acceso al CAD.
         //return (_IBibliografiaRecomendadaCAD.Listaobras());
 
         throw new NotImplementedException ("Method Listaobras() not yet implemented.");

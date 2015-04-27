@@ -1,3 +1,5 @@
+
+
 using System;
 using System.Text;
 
@@ -30,27 +32,60 @@ public IObraCAD get_IObraCAD ()
         return this._IObraCAD;
 }
 
-public int New_ (string p_nombre, short p_ejemplares, string p_autor, string p_tematica, short p_paginas, bool p_prestado, bool p_reservado)
+public string New_ (string p_Isbn, string p_nombre, short p_ejemplares, short p_paginas, System.Collections.Generic.IList<string> p_escrita, System.Collections.Generic.IList<string> p_tematica, short p_anyo, string p_imagen)
 {
         ObraEN obraEN = null;
-        int oid;
+        string oid;
 
         //Initialized ObraEN
         obraEN = new ObraEN ();
+        obraEN.Isbn = p_Isbn;
+
         obraEN.Nombre = p_nombre;
+
         obraEN.Ejemplares = p_ejemplares;
-        obraEN.Autor = p_autor;
-        obraEN.Tematica = p_tematica;
+
         obraEN.Paginas = p_paginas;
-        obraEN.Prestado = p_prestado;
-        obraEN.Reservado = p_reservado;
-        
+
+
+        obraEN.Escrita = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN>();
+        if (p_escrita != null) {
+                foreach (string item in p_escrita) {
+                        BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN en = new BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN ();
+                        en.Nombre = item;
+                        obraEN.Escrita.Add (en);
+                }
+        }
+
+        else{
+                obraEN.Escrita = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN>();
+        }
+
+
+        obraEN.Tematica = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN>();
+        if (p_tematica != null) {
+                foreach (string item in p_tematica) {
+                        BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN en = new BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN ();
+                        en.Nombre = item;
+                        obraEN.Tematica.Add (en);
+                }
+        }
+
+        else{
+                obraEN.Tematica = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN>();
+        }
+
+        obraEN.Anyo = p_anyo;
+
+        obraEN.Imagen = p_imagen;
+
         //Call to ObraCAD
+
         oid = _IObraCAD.New_ (obraEN);
         return oid;
 }
 
-public void Modify (int p_Obra_OID, string p_nombre, short p_ejemplares, string p_autor, string p_tematica, short p_paginas, bool p_prestado, bool p_reservado)
+public void Modify (string p_Obra_OID, string p_nombre, short p_ejemplares, short p_paginas, short p_anyo, string p_imagen)
 {
         ObraEN obraEN = null;
 
@@ -59,30 +94,30 @@ public void Modify (int p_Obra_OID, string p_nombre, short p_ejemplares, string 
         obraEN.Isbn = p_Obra_OID;
         obraEN.Nombre = p_nombre;
         obraEN.Ejemplares = p_ejemplares;
-        obraEN.Autor = p_autor;
-        obraEN.Tematica = p_tematica;
         obraEN.Paginas = p_paginas;
-        obraEN.Prestado = p_prestado;
-        obraEN.Reservado = p_reservado;
+        obraEN.Anyo = p_anyo;
+        obraEN.Imagen = p_imagen;
         //Call to ObraCAD
 
         _IObraCAD.Modify (obraEN);
 }
 
-public void Destroy (int Isbn)
+public void Destroy (string Isbn)
 {
         _IObraCAD.Destroy (Isbn);
 }
 
-public System.Collections.Generic.IList<ObraEN> DameObras (int first, int size)
+public System.Collections.Generic.IList<ObraEN> ListarObras (int first, int size)
 {
         System.Collections.Generic.IList<ObraEN> list = null;
-        list = _IObraCAD.DameObras (first, size);
+
+        list = _IObraCAD.ListarObras (first, size);
         return list;
 }
-public ObraEN BuscaPorId (int Isbn)
+public ObraEN BuscaPorId (string Isbn)
 {
         ObraEN obraEN = null;
+
         obraEN = _IObraCAD.BuscaPorId (Isbn);
         return obraEN;
 }

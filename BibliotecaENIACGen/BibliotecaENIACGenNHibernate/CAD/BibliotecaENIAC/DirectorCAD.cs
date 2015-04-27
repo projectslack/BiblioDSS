@@ -51,7 +51,7 @@ public DirectorEN ReadOIDDefault (string DNI)
 }
 
 
-public System.Collections.Generic.IList<DirectorEN> Listadirectores (int first, int size)
+public System.Collections.Generic.IList<DirectorEN> ListarDirectores (int first, int size)
 {
         System.Collections.Generic.IList<DirectorEN> result = null;
         try

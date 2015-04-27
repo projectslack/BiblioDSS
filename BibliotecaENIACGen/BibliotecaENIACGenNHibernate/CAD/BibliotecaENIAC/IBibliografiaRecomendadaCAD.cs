@@ -14,8 +14,5 @@ void Modify (BibliografiaRecomendadaEN bibliografiaRecomendada);
 
 
 void Destroy (int idSocioObras);
-
-
-System.Collections.Generic.IList<BibliografiaRecomendadaEN> Listarrecomendadas (int first, int size);
 }
 }

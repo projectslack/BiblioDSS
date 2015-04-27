@@ -33,7 +33,7 @@ private BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario;
  *
  */
 
-private BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN obra;
+private BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN ejemplar;
 
 
 
@@ -59,8 +59,8 @@ public virtual BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN Usuario
 }
 
 
-public virtual BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN Obra {
-        get { return obra; } set { obra = value;  }
+public virtual BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN Ejemplar {
+        get { return ejemplar; } set { ejemplar = value;  }
 }
 
 
@@ -73,18 +73,18 @@ public PrestamoEN()
 
 
 
-public PrestamoEN(string idPrestamo, Nullable<DateTime> fechaVencimiento, Nullable<DateTime> fechaInicio, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN obra)
+public PrestamoEN(string idPrestamo, Nullable<DateTime> fechaVencimiento, Nullable<DateTime> fechaInicio, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN ejemplar)
 {
-        this.init (idPrestamo, fechaVencimiento, fechaInicio, usuario, obra);
+        this.init (idPrestamo, fechaVencimiento, fechaInicio, usuario, ejemplar);
 }
 
 
 public PrestamoEN(PrestamoEN prestamo)
 {
-        this.init (prestamo.IdPrestamo, prestamo.FechaVencimiento, prestamo.FechaInicio, prestamo.Usuario, prestamo.Obra);
+        this.init (prestamo.IdPrestamo, prestamo.FechaVencimiento, prestamo.FechaInicio, prestamo.Usuario, prestamo.Ejemplar);
 }
 
-private void init (string idPrestamo, Nullable<DateTime> fechaVencimiento, Nullable<DateTime> fechaInicio, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN obra)
+private void init (string idPrestamo, Nullable<DateTime> fechaVencimiento, Nullable<DateTime> fechaInicio, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN ejemplar)
 {
         this.IdPrestamo = idPrestamo;
 
@@ -95,7 +95,7 @@ private void init (string idPrestamo, Nullable<DateTime> fechaVencimiento, Nulla
 
         this.Usuario = usuario;
 
-        this.Obra = obra;
+        this.Ejemplar = ejemplar;
 }
 
 public override bool Equals (object obj)

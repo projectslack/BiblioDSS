@@ -10,16 +10,6 @@
 			
 			
 		  			
-						<bag name="Obra" table="[obra_bibliografiaRecomendada]" inverse="true" >
-							<key>
-									<column name="[FK_idSocioObrasBibliografiaRecomendada_idBibliografiaRecomendada]"/>
-							</key>
-      						<many-to-many class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN">
-									<column name="[FK_IsbnObra_idObra]"/>
-      						</many-to-many>
-    					</bag>
-			
-		  			
 						<bag name="Usuario" table="[usuario_bibliografiaRecomendada]" inverse="true" >
 							<key>
 									<column name="[FK_idSocioObrasBibliografiaRecomendada_idBibliografiaRecomendada]"/>
@@ -28,6 +18,19 @@
 									<column name="[FK_DNIUsuario_idUsuario]"/>
       						</many-to-many>
     					</bag>
+			
+		  			
+						<many-to-one name="Tem" class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN" >	
+								<column name="[FK_nombre_idTem]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Autor" class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN" >	
+								<column name="[FK_nombre_idAutor]"/>
+						</many-to-one>
+											 					
+					
 					
 					
 					

@@ -56,6 +56,11 @@ public string New_ (PrestamoEN prestamo)
         try
         {
                 SessionInitializeTransaction ();
+                if (prestamo.Ejemplar != null) {
+                        prestamo.Ejemplar = (BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN)session.Load (typeof(BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN), prestamo.Ejemplar.Id);
+
+                        prestamo.Ejemplar.Prestamo.Add (prestamo);
+                }
 
                 session.Save (prestamo);
                 SessionCommit ();

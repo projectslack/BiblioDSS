@@ -32,14 +32,14 @@ public IPASCAD get_IPASCAD ()
         return this._IPASCAD;
 }
 
-public System.Collections.Generic.IList<PASEN> Damepersonal (int first, int size)
+public System.Collections.Generic.IList<PASEN> ListarPAS (int first, int size)
 {
         System.Collections.Generic.IList<PASEN> list = null;
 
-        list = _IPASCAD.Damepersonal (first, size);
+        list = _IPASCAD.ListarPAS (first, size);
         return list;
 }
-public string New_ (string p_DNI, string p_nombre, string p_apellidos, long p_telefono, string p_correo, int p_penalizacion, string p_contrasenya, bool p_logeado)
+public string New_ (string p_DNI, string p_nombre, string p_apellidos, short p_telefono, string p_correo, Nullable<DateTime> p_penalizacion, string p_contrasenya, bool p_logeado)
 {
         PASEN pASEN = null;
         string oid;

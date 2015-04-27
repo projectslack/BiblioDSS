@@ -1,3 +1,4 @@
+
 using System;
 using System.Text;
 
@@ -13,20 +14,20 @@ namespace BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC
 {
 public partial class ObraCEN
 {
-public bool EstaReservada (int p_oid)
+public bool EstaReservada (string p_oid)
 {
         /*PROTECTED REGION ID(BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC_Obra_estaReservada) ENABLED START*/
-
+        throw new Exception ("No implementado todav�a...");
         // Write here your custom code...
-        return (_IObraCAD.BuscaPorId(p_oid)).Reservado;
+        //return (_IObraCAD.BuscaPorId (p_oid)).Reservado;
         /*
-        bool result = false;
-        ObraEN obra = _IObraCAD.BuscaPorId (p_oid);
-        if (obra.Reservado.Equals (true)) {
-                result = true;
-        }
-
-        return result;
+         * bool result = false;
+         * ObraEN obra = _IObraCAD.BuscaPorId (p_oid);
+         * if (obra.Reservado.Equals (true)) {
+         *      result = true;
+         * }
+         *
+         * return result;
          * */
         /*PROTECTED REGION END*/
 }

@@ -61,13 +61,5 @@ public void Destroy (int idSocioObras)
 {
         _IBibliografiaRecomendadaCAD.Destroy (idSocioObras);
 }
-
-public System.Collections.Generic.IList<BibliografiaRecomendadaEN> Listarrecomendadas (int first, int size)
-{
-        System.Collections.Generic.IList<BibliografiaRecomendadaEN> list = null;
-
-        list = _IBibliografiaRecomendadaCAD.Listarrecomendadas (first, size);
-        return list;
-}
 }
 }

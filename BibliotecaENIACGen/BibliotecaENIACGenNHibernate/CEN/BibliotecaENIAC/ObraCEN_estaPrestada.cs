@@ -14,20 +14,20 @@ namespace BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC
 {
 public partial class ObraCEN
 {
-public bool EstaPrestada (int p_oid)
+public bool EstaPrestada (string p_oid)
 {
         /*PROTECTED REGION ID(BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC_Obra_estaPrestada) ENABLED START*/
-
-        return (_IObraCAD.BuscaPorId(p_oid)).Prestado;
+        throw new Exception("No implementado todavía...");
+        //return (_IObraCAD.BuscaPorId (p_oid)).Prestado;
         // Write here your custom code...
         /*
-        bool result = false;
-        ObraEN obra = _IObraCAD.BuscaPorId (p_oid);
-        if (obra.Prestado.Equals (true)) {
-                result = true;
-        }
-        return result;
-        */
+         * bool result = false;
+         * ObraEN obra = _IObraCAD.BuscaPorId (p_oid);
+         * if (obra.Prestado.Equals (true)) {
+         *      result = true;
+         * }
+         * return result;
+         */
         /*PROTECTED REGION END*/
 }
 }
