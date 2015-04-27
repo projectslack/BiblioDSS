@@ -10,13 +10,13 @@
 					<property name="Apellidos" type="string"> 
 						<column name="[apellidos]"  not-null="true"/>
 					</property>
-					<property name="Telefono" type="long"> 
+					<property name="Telefono" type="short"> 
 						<column name="[telefono]"  not-null="true"/>
 					</property>
 					<property name="Correo" type="string"> 
 						<column name="[correo]"  not-null="true"/>
 					</property>
-					<property name="Penalizacion" type="integer"> 
+					<property name="Penalizacion" type="date"> 
 						<column name="[penalizacion]"  not-null="true"/>
 					</property>
 					<property name="Contrasenya" type="string"> 
@@ -43,7 +43,7 @@
     					</bag>
 			
 		  			
-						<bag name="Reservar" >
+						<bag name="Reserva" >
 							<key>
 								<column name="[FK_DNIUsuario_idUsuario]"/>
 					      	</key>
@@ -61,6 +61,16 @@
 					
 			
 			
+			
+		  			
+						<bag name="Desiderata" >
+							<key>
+								<column name="[FK_DNIUsuario_idUsuario]"/>
+					      	</key>
+							<one-to-many class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN"/>
+					    </bag>
+					
+					
 					
 					
 					

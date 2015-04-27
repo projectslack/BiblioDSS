@@ -1,3 +1,4 @@
+
 using System;
 using System.Text;
 
@@ -20,8 +21,9 @@ public bool RenovarPrestamo (string p_oid)
         // Write here your custom code...
         bool result = true;
         PrestamoEN prestamo = _IPrestamoCAD.BuscarPrestamo (p_oid);
+
         Nullable<DateTime> tiempoAux = prestamo.FechaVencimiento;
-        prestamo.FechaVencimiento = tiempoAux.Value.AddDays(7);
+        prestamo.FechaVencimiento = tiempoAux.Value.AddDays (7);
         return result;
         /*PROTECTED REGION END*/
 }

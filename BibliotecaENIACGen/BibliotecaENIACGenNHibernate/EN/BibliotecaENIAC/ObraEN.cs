@@ -9,13 +9,7 @@ public partial class ObraEN
  *
  */
 
-private int isbn;
-
-/**
- *
- */
-
-private System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.BibliografiaRecomendadaEN> tieneobras;
+private string isbn;
 
 /**
  *
@@ -33,18 +27,6 @@ private short ejemplares;
  *
  */
 
-private string autor;
-
-/**
- *
- */
-
-private string tematica;
-
-/**
- *
- */
-
 private short paginas;
 
 /**
@@ -57,31 +39,38 @@ private System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.Bibliot
  *
  */
 
-private System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN> prestamo;
+private System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> escrita;
 
 /**
  *
  */
 
-private bool prestado;
+private System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> tematica;
 
 /**
  *
  */
 
-private bool reservado;
+private System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN> ejemplar;
+
+/**
+ *
+ */
+
+private short anyo;
+
+/**
+ *
+ */
+
+private string imagen;
 
 
 
 
 
-public virtual int Isbn {
+public virtual string Isbn {
         get { return isbn; } set { isbn = value;  }
-}
-
-
-public virtual System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.BibliografiaRecomendadaEN> Tieneobras {
-        get { return tieneobras; } set { tieneobras = value;  }
 }
 
 
@@ -95,16 +84,6 @@ public virtual short Ejemplares {
 }
 
 
-public virtual string Autor {
-        get { return autor; } set { autor = value;  }
-}
-
-
-public virtual string Tematica {
-        get { return tematica; } set { tematica = value;  }
-}
-
-
 public virtual short Paginas {
         get { return paginas; } set { paginas = value;  }
 }
@@ -115,18 +94,28 @@ public virtual System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.
 }
 
 
-public virtual System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN> Prestamo {
-        get { return prestamo; } set { prestamo = value;  }
+public virtual System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> Escrita {
+        get { return escrita; } set { escrita = value;  }
 }
 
 
-public virtual bool Prestado {
-        get { return prestado; } set { prestado = value;  }
+public virtual System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> Tematica {
+        get { return tematica; } set { tematica = value;  }
 }
 
 
-public virtual bool Reservado {
-        get { return reservado; } set { reservado = value;  }
+public virtual System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN> Ejemplar {
+        get { return ejemplar; } set { ejemplar = value;  }
+}
+
+
+public virtual short Anyo {
+        get { return anyo; } set { anyo = value;  }
+}
+
+
+public virtual string Imagen {
+        get { return imagen; } set { imagen = value;  }
 }
 
 
@@ -135,48 +124,47 @@ public virtual bool Reservado {
 
 public ObraEN()
 {
-        tieneobras = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.BibliografiaRecomendadaEN>();
         reserva = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN>();
-        prestamo = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN>();
+        escrita = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN>();
+        tematica = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN>();
+        ejemplar = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN>();
 }
 
 
 
-public ObraEN(int isbn, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.BibliografiaRecomendadaEN> tieneobras, string nombre, short ejemplares, string autor, string tematica, short paginas, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN> reserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN> prestamo, bool prestado, bool reservado)
+public ObraEN(string isbn, string nombre, short ejemplares, short paginas, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN> reserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> escrita, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> tematica, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN> ejemplar, short anyo, string imagen)
 {
-        this.init (isbn, tieneobras, nombre, ejemplares, autor, tematica, paginas, reserva, prestamo, prestado, reservado);
+        this.init (isbn, nombre, ejemplares, paginas, reserva, escrita, tematica, ejemplar, anyo, imagen);
 }
 
 
 public ObraEN(ObraEN obra)
 {
-        this.init (obra.Isbn, obra.Tieneobras, obra.Nombre, obra.Ejemplares, obra.Autor, obra.Tematica, obra.Paginas, obra.Reserva, obra.Prestamo, obra.Prestado, obra.Reservado);
+        this.init (obra.Isbn, obra.Nombre, obra.Ejemplares, obra.Paginas, obra.Reserva, obra.Escrita, obra.Tematica, obra.Ejemplar, obra.Anyo, obra.Imagen);
 }
 
-private void init (int isbn, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.BibliografiaRecomendadaEN> tieneobras, string nombre, short ejemplares, string autor, string tematica, short paginas, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN> reserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN> prestamo, bool prestado, bool reservado)
+private void init (string isbn, string nombre, short ejemplares, short paginas, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ReservaEN> reserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> escrita, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> tematica, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN> ejemplar, short anyo, string imagen)
 {
         this.Isbn = Isbn;
 
-
-        this.Tieneobras = tieneobras;
 
         this.Nombre = nombre;
 
         this.Ejemplares = ejemplares;
 
-        this.Autor = autor;
-
-        this.Tematica = tematica;
-
         this.Paginas = paginas;
 
         this.Reserva = reserva;
 
-        this.Prestamo = prestamo;
+        this.Escrita = escrita;
 
-        this.Prestado = prestado;
+        this.Tematica = tematica;
 
-        this.Reservado = reservado;
+        this.Ejemplar = ejemplar;
+
+        this.Anyo = anyo;
+
+        this.Imagen = imagen;
 }
 
 public override bool Equals (object obj)

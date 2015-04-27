@@ -18,5 +18,16 @@ void Destroy (string DNI);
 
 
 UsuarioEN DameporOID (string DNI);
+
+
+
+
+
+
+
+
+
+
+System.Collections.Generic.IList<UsuarioEN> ListaUsuarios (int first, int size);
 }
 }

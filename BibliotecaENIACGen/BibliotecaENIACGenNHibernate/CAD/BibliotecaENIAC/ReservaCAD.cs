@@ -56,6 +56,11 @@ public string New_ (ReservaEN reserva)
         try
         {
                 SessionInitializeTransaction ();
+                if (reserva.Usuario != null) {
+                        reserva.Usuario = (BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN)session.Load (typeof(BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN), reserva.Usuario.DNI);
+
+                        reserva.Usuario.Reserva.Add (reserva);
+                }
 
                 session.Save (reserva);
                 SessionCommit ();

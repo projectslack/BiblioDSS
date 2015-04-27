@@ -8,7 +8,7 @@ public partial interface IPASCAD
 {
 PASEN ReadOIDDefault (string DNI);
 
-System.Collections.Generic.IList<PASEN> Damepersonal (int first, int size);
+System.Collections.Generic.IList<PASEN> ListarPAS (int first, int size);
 
 
 string New_ (PASEN pAS);

@@ -15,13 +15,19 @@ private int idSocioObras;
  *
  */
 
-private System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> obra;
+private System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN> usuario;
 
 /**
  *
  */
 
-private System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN> usuario;
+private BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN tem;
+
+/**
+ *
+ */
+
+private BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN autor;
 
 
 
@@ -32,13 +38,18 @@ public virtual int IdSocioObras {
 }
 
 
-public virtual System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> Obra {
-        get { return obra; } set { obra = value;  }
+public virtual System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN> Usuario {
+        get { return usuario; } set { usuario = value;  }
 }
 
 
-public virtual System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN> Usuario {
-        get { return usuario; } set { usuario = value;  }
+public virtual BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN Tem {
+        get { return tem; } set { tem = value;  }
+}
+
+
+public virtual BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN Autor {
+        get { return autor; } set { autor = value;  }
 }
 
 
@@ -47,31 +58,32 @@ public virtual System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.
 
 public BibliografiaRecomendadaEN()
 {
-        obra = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN>();
         usuario = new System.Collections.Generic.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN>();
 }
 
 
 
-public BibliografiaRecomendadaEN(int idSocioObras, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> obra, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN> usuario)
+public BibliografiaRecomendadaEN(int idSocioObras, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN> usuario, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN tem, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN autor)
 {
-        this.init (idSocioObras, obra, usuario);
+        this.init (idSocioObras, usuario, tem, autor);
 }
 
 
 public BibliografiaRecomendadaEN(BibliografiaRecomendadaEN bibliografiaRecomendada)
 {
-        this.init (bibliografiaRecomendada.IdSocioObras, bibliografiaRecomendada.Obra, bibliografiaRecomendada.Usuario);
+        this.init (bibliografiaRecomendada.IdSocioObras, bibliografiaRecomendada.Usuario, bibliografiaRecomendada.Tem, bibliografiaRecomendada.Autor);
 }
 
-private void init (int idSocioObras, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> obra, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN> usuario)
+private void init (int idSocioObras, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN> usuario, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN tem, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN autor)
 {
         this.IdSocioObras = idSocioObras;
 
 
-        this.Obra = obra;
-
         this.Usuario = usuario;
+
+        this.Tem = tem;
+
+        this.Autor = autor;
 }
 
 public override bool Equals (object obj)

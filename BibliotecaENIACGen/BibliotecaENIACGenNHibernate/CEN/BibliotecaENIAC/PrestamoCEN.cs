@@ -32,7 +32,7 @@ public IPrestamoCAD get_IPrestamoCAD ()
         return this._IPrestamoCAD;
 }
 
-public string New_ (string p_idPrestamo, Nullable<DateTime> p_fechaVencimiento, Nullable<DateTime> p_fechaInicio)
+public string New_ (string p_idPrestamo, Nullable<DateTime> p_fechaVencimiento, Nullable<DateTime> p_fechaInicio, int p_ejemplar)
 {
         PrestamoEN prestamoEN = null;
         string oid;
@@ -44,6 +44,12 @@ public string New_ (string p_idPrestamo, Nullable<DateTime> p_fechaVencimiento, 
         prestamoEN.FechaVencimiento = p_fechaVencimiento;
 
         prestamoEN.FechaInicio = p_fechaInicio;
+
+
+        if (p_ejemplar != -1) {
+                prestamoEN.Ejemplar = new BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN ();
+                prestamoEN.Ejemplar.Id = p_ejemplar;
+        }
 
         //Call to PrestamoCAD
 

@@ -6,20 +6,20 @@ namespace BibliotecaENIACGenNHibernate.CAD.BibliotecaENIAC
 {
 public partial interface IObraCAD
 {
-ObraEN ReadOIDDefault (int Isbn);
+ObraEN ReadOIDDefault (string Isbn);
 
-int New_ (ObraEN obra);
+string New_ (ObraEN obra);
 
 void Modify (ObraEN obra);
 
 
-void Destroy (int Isbn);
+void Destroy (string Isbn);
 
 
-System.Collections.Generic.IList<ObraEN> DameObras (int first, int size);
+System.Collections.Generic.IList<ObraEN> ListarObras (int first, int size);
 
 
-ObraEN BuscaPorId (int Isbn);
+ObraEN BuscaPorId (string Isbn);
 
 
 System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> BuscaPorNombre (string nombre);

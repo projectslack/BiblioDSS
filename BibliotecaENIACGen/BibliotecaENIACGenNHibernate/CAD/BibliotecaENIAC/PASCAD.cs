@@ -51,7 +51,7 @@ public PASEN ReadOIDDefault (string DNI)
 }
 
 
-public System.Collections.Generic.IList<PASEN> Damepersonal (int first, int size)
+public System.Collections.Generic.IList<PASEN> ListarPAS (int first, int size)
 {
         System.Collections.Generic.IList<PASEN> result = null;
         try

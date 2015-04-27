@@ -1,3 +1,4 @@
+
 using System;
 using System.Text;
 using BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC;
@@ -19,6 +20,7 @@ public BibliografiaRecomendadaCAD() : base ()
 public BibliografiaRecomendadaCAD(ISession sessionAux) : base (sessionAux)
 {
 }
+
 
 
 public BibliografiaRecomendadaEN ReadOIDDefault (int idSocioObras)
@@ -54,6 +56,7 @@ public int New_ (BibliografiaRecomendadaEN bibliografiaRecomendada)
         try
         {
                 SessionInitializeTransaction ();
+
                 session.Save (bibliografiaRecomendada);
                 SessionCommit ();
         }
@@ -64,6 +67,7 @@ public int New_ (BibliografiaRecomendadaEN bibliografiaRecomendada)
                         throw ex;
                 throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in BibliografiaRecomendadaCAD.", ex);
         }
+
 
         finally
         {
@@ -90,6 +94,7 @@ public void Modify (BibliografiaRecomendadaEN bibliografiaRecomendada)
                 throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in BibliografiaRecomendadaCAD.", ex);
         }
 
+
         finally
         {
                 SessionClose ();
@@ -112,39 +117,11 @@ public void Destroy (int idSocioObras)
                 throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in BibliografiaRecomendadaCAD.", ex);
         }
 
-        finally
-        {
-                SessionClose ();
-        }
-}
-
-public System.Collections.Generic.IList<BibliografiaRecomendadaEN> Listarrecomendadas (int first, int size)
-{
-        System.Collections.Generic.IList<BibliografiaRecomendadaEN> result = null;
-        try
-        {
-                SessionInitializeTransaction ();
-                if (size > 0)
-                        result = session.CreateCriteria (typeof(BibliografiaRecomendadaEN)).
-                                 SetFirstResult (first).SetMaxResults (size).List<BibliografiaRecomendadaEN>();
-                else
-                        result = session.CreateCriteria (typeof(BibliografiaRecomendadaEN)).List<BibliografiaRecomendadaEN>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is BibliotecaENIACGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in BibliografiaRecomendadaCAD.", ex);
-        }
 
         finally
         {
                 SessionClose ();
         }
-
-        return result;
 }
 }
 }

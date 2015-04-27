@@ -21,9 +21,10 @@ public bool Logearse (string p_oid, string contrasenya)
         // Write here your custom code...
         bool result = false;
         UsuarioEN usuario = _IUsuarioCAD.DameporOID (p_oid);
+
         if (usuario.Contrasenya.Equals (contrasenya)) {
-            result = true;
-            usuario.Logeado = true;
+                result = true;
+                usuario.Logeado = true;
         }
         return result;
         /*PROTECTED REGION END*/

@@ -15,12 +15,6 @@ private string idReserva;
  *
  */
 
-private BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PASEN pAS;
-
-/**
- *
- */
-
 private System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> obra;
 
 /**
@@ -47,11 +41,6 @@ private BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario;
 
 public virtual string IdReserva {
         get { return idReserva; } set { idReserva = value;  }
-}
-
-
-public virtual BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PASEN PAS {
-        get { return pAS; } set { pAS = value;  }
 }
 
 
@@ -85,23 +74,21 @@ public ReservaEN()
 
 
 
-public ReservaEN(string idReserva, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PASEN pAS, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> obra, Nullable<DateTime> fechaVencimiento, Nullable<DateTime> fechaInicio, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario)
+public ReservaEN(string idReserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> obra, Nullable<DateTime> fechaVencimiento, Nullable<DateTime> fechaInicio, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario)
 {
-        this.init (idReserva, pAS, obra, fechaVencimiento, fechaInicio, usuario);
+        this.init (idReserva, obra, fechaVencimiento, fechaInicio, usuario);
 }
 
 
 public ReservaEN(ReservaEN reserva)
 {
-        this.init (reserva.IdReserva, reserva.PAS, reserva.Obra, reserva.FechaVencimiento, reserva.FechaInicio, reserva.Usuario);
+        this.init (reserva.IdReserva, reserva.Obra, reserva.FechaVencimiento, reserva.FechaInicio, reserva.Usuario);
 }
 
-private void init (string idReserva, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PASEN pAS, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> obra, Nullable<DateTime> fechaVencimiento, Nullable<DateTime> fechaInicio, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario)
+private void init (string idReserva, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> obra, Nullable<DateTime> fechaVencimiento, Nullable<DateTime> fechaInicio, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.UsuarioEN usuario)
 {
         this.IdReserva = idReserva;
 
-
-        this.PAS = pAS;
 
         this.Obra = obra;
 

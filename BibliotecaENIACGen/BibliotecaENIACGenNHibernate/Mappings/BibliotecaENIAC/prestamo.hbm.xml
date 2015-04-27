@@ -21,8 +21,8 @@
 											 					
 			
 		  			
-						<many-to-one name="Obra" class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN" >	
-								<column name="[FK_IsbnObra_idObra]"/>
+						<many-to-one name="Ejemplar" class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.EjemplarEN" >	
+								<column name="[FK_idEjemplar_idEjemplar]"/>
 						</many-to-one>
 											 					
 					

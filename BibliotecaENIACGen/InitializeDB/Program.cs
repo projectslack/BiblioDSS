@@ -25,7 +25,7 @@ static void Main (string[] args)
                         CreateDB.Create ("BibliotecaENIACGenNHibernate", "nhibernateUser", "nhibernatePass");
                         var cfg = new Configuration ();
                         cfg.Configure ();
-                        cfg.AddAssembly (typeof(SocioEN).Assembly);
+                        cfg.AddAssembly (typeof(DirectorEN).Assembly);
                         new SchemaExport (cfg).Execute (true, true, false);
                         System.Console.WriteLine ("-----------------------------");
                         System.Console.WriteLine ("Database schema created successfully");
