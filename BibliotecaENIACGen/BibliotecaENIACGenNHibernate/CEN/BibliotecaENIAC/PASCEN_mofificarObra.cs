@@ -14,7 +14,7 @@ namespace BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC
 {
 public partial class PASCEN
 {
-public void MofificarObra (string p_oid)
+public void MofificarObra (string p_oid, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN obramodificada)
 {
         /*PROTECTED REGION ID(BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC_PAS_mofificarObra) ENABLED START*/
 

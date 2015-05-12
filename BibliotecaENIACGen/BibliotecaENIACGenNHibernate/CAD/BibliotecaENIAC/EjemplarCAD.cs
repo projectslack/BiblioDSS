@@ -91,9 +91,6 @@ public void Modify (EjemplarEN ejemplar)
 
                 ejemplarEN.Prestado = ejemplar.Prestado;
 
-
-                ejemplarEN.Reservado = ejemplar.Reservado;
-
                 session.Update (ejemplarEN);
                 SessionCommit ();
         }
@@ -133,6 +130,33 @@ public void Destroy (int id)
         {
                 SessionClose ();
         }
+}
+
+public EjemplarEN BuscarId (int id)
+{
+        EjemplarEN ejemplarEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                ejemplarEN = (EjemplarEN)session.Get (typeof(EjemplarEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BibliotecaENIACGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in EjemplarCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return ejemplarEN;
 }
 }
 }

@@ -123,5 +123,32 @@ public void Destroy (int idSocioObras)
                 SessionClose ();
         }
 }
+
+public BibliografiaRecomendadaEN BuscarId (int idSocioObras)
+{
+        BibliografiaRecomendadaEN bibliografiaRecomendadaEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                bibliografiaRecomendadaEN = (BibliografiaRecomendadaEN)session.Get (typeof(BibliografiaRecomendadaEN), idSocioObras);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BibliotecaENIACGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in BibliografiaRecomendadaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return bibliografiaRecomendadaEN;
+}
 }
 }

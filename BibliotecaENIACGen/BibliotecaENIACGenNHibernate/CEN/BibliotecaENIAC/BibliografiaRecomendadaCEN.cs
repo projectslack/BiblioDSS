@@ -61,5 +61,13 @@ public void Destroy (int idSocioObras)
 {
         _IBibliografiaRecomendadaCAD.Destroy (idSocioObras);
 }
+
+public BibliografiaRecomendadaEN BuscarId (int idSocioObras)
+{
+        BibliografiaRecomendadaEN bibliografiaRecomendadaEN = null;
+
+        bibliografiaRecomendadaEN = _IBibliografiaRecomendadaCAD.BuscarId (idSocioObras);
+        return bibliografiaRecomendadaEN;
+}
 }
 }

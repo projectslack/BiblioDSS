@@ -164,5 +164,32 @@ public System.Collections.Generic.IList<ReservaEN> ListaReservas (int first, int
 
         return result;
 }
+
+public ReservaEN BuscarId (string idReserva)
+{
+        ReservaEN reservaEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                reservaEN = (ReservaEN)session.Get (typeof(ReservaEN), idReserva);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BibliotecaENIACGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in ReservaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return reservaEN;
+}
 }
 }

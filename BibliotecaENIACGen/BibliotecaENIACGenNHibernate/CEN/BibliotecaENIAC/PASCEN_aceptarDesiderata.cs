@@ -14,7 +14,7 @@ namespace BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC
 {
 public partial class PASCEN
 {
-public void AceptarDesiderata (string p_oid)
+public void AceptarDesiderata (string p_oid, int idDesiderata)
 {
         /*PROTECTED REGION ID(BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC_PAS_aceptarDesiderata) ENABLED START*/
 

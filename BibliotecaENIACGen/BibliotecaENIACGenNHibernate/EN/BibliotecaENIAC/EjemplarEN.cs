@@ -21,12 +21,6 @@ private bool prestado;
  *
  */
 
-private bool reservado;
-
-/**
- *
- */
-
 private BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN obra;
 
 /**
@@ -46,11 +40,6 @@ public virtual int Id {
 
 public virtual bool Prestado {
         get { return prestado; } set { prestado = value;  }
-}
-
-
-public virtual bool Reservado {
-        get { return reservado; } set { reservado = value;  }
 }
 
 
@@ -74,25 +63,23 @@ public EjemplarEN()
 
 
 
-public EjemplarEN(int id, bool prestado, bool reservado, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN obra, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN> prestamo)
+public EjemplarEN(int id, bool prestado, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN obra, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN> prestamo)
 {
-        this.init (id, prestado, reservado, obra, prestamo);
+        this.init (id, prestado, obra, prestamo);
 }
 
 
 public EjemplarEN(EjemplarEN ejemplar)
 {
-        this.init (ejemplar.Id, ejemplar.Prestado, ejemplar.Reservado, ejemplar.Obra, ejemplar.Prestamo);
+        this.init (ejemplar.Id, ejemplar.Prestado, ejemplar.Obra, ejemplar.Prestamo);
 }
 
-private void init (int id, bool prestado, bool reservado, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN obra, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN> prestamo)
+private void init (int id, bool prestado, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN obra, System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN> prestamo)
 {
         this.Id = id;
 
 
         this.Prestado = prestado;
-
-        this.Reservado = reservado;
 
         this.Obra = obra;
 

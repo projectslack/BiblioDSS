@@ -14,7 +14,7 @@ namespace BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC
 {
 public partial class PASCEN
 {
-public void BorrarObra (string p_oid)
+public void BorrarObra (string p_oid, string idObra)
 {
         /*PROTECTED REGION ID(BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC_PAS_borrarObra) ENABLED START*/
 

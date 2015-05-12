@@ -10,10 +10,6 @@
 					<property name="Prestado" type="boolean"> 
 						<column name="[prestado]"  not-null="true"/>
 					</property>
-					<property name="Reservado" type="boolean"> 
-						<column name="[reservado]"  not-null="true"/>
-					</property>
-			
 			
 			
 			
@@ -30,7 +26,6 @@
 					      	</key>
 							<one-to-many class="BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.PrestamoEN"/>
 					    </bag>
-					
 					
 					
 					

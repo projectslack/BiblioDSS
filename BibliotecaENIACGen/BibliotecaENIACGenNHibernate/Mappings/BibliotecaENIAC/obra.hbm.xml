@@ -16,6 +16,9 @@
 					<property name="Imagen" type="string"> 
 						<column name="[imagen]"  not-null="true"/>
 					</property>
+					<property name="Reservada" type="boolean"> 
+						<column name="[reservada]"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -60,6 +63,8 @@
 					
 			
 			
+			
+					
 					
 					
 					

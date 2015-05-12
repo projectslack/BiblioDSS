@@ -14,7 +14,7 @@ namespace BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC
 {
 public partial class UsuarioCEN
 {
-public void QuitarReserva (string p_oid)
+public void QuitarReserva (string p_oid, string reservaid)
 {
         /*PROTECTED REGION ID(BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC_Usuario_quitarReserva) ENABLED START*/
 

@@ -14,7 +14,7 @@ namespace BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC
 {
 public partial class UsuarioCEN
 {
-public void ModificarDesiderata (string p_oid)
+public void ModificarDesiderata (string p_oid, BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN desiteratamodificada)
 {
         /*PROTECTED REGION ID(BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC_Usuario_modificarDesiderata) ENABLED START*/
 

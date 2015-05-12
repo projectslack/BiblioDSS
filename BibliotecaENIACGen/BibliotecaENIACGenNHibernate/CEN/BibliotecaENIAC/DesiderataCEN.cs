@@ -94,5 +94,12 @@ public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.Bibliote
 {
         return _IDesiderataCAD.ListaDesideratasPendientes (aceptada);
 }
+public DesiderataEN BuscarId (int id)
+{
+        DesiderataEN desiderataEN = null;
+
+        desiderataEN = _IDesiderataCAD.BuscarId (id);
+        return desiderataEN;
+}
 }
 }

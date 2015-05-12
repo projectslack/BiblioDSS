@@ -14,5 +14,8 @@ void Modify (BibliografiaRecomendadaEN bibliografiaRecomendada);
 
 
 void Destroy (int idSocioObras);
+
+
+BibliografiaRecomendadaEN BuscarId (int idSocioObras);
 }
 }

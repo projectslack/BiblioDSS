@@ -107,6 +107,9 @@ public void Modify (ObraEN obra)
 
                 obraEN.Imagen = obra.Imagen;
 
+
+                obraEN.Reservada = obra.Reservada;
+
                 session.Update (obraEN);
                 SessionCommit ();
         }

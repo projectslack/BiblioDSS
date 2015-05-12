@@ -32,7 +32,7 @@ public IEjemplarCAD get_IEjemplarCAD ()
         return this._IEjemplarCAD;
 }
 
-public int New_ (bool p_prestado, bool p_reservado, string p_obra)
+public int New_ (bool p_prestado, string p_obra)
 {
         EjemplarEN ejemplarEN = null;
         int oid;
@@ -40,8 +40,6 @@ public int New_ (bool p_prestado, bool p_reservado, string p_obra)
         //Initialized EjemplarEN
         ejemplarEN = new EjemplarEN ();
         ejemplarEN.Prestado = p_prestado;
-
-        ejemplarEN.Reservado = p_reservado;
 
 
         if (p_obra != null) {
@@ -55,7 +53,7 @@ public int New_ (bool p_prestado, bool p_reservado, string p_obra)
         return oid;
 }
 
-public void Modify (int p_Ejemplar_OID, bool p_prestado, bool p_reservado)
+public void Modify (int p_Ejemplar_OID, bool p_prestado)
 {
         EjemplarEN ejemplarEN = null;
 
@@ -63,7 +61,6 @@ public void Modify (int p_Ejemplar_OID, bool p_prestado, bool p_reservado)
         ejemplarEN = new EjemplarEN ();
         ejemplarEN.Id = p_Ejemplar_OID;
         ejemplarEN.Prestado = p_prestado;
-        ejemplarEN.Reservado = p_reservado;
         //Call to EjemplarCAD
 
         _IEjemplarCAD.Modify (ejemplarEN);
@@ -72,6 +69,14 @@ public void Modify (int p_Ejemplar_OID, bool p_prestado, bool p_reservado)
 public void Destroy (int id)
 {
         _IEjemplarCAD.Destroy (id);
+}
+
+public EjemplarEN BuscarId (int id)
+{
+        EjemplarEN ejemplarEN = null;
+
+        ejemplarEN = _IEjemplarCAD.BuscarId (id);
+        return ejemplarEN;
 }
 }
 }

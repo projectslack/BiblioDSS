@@ -14,5 +14,9 @@ void Modify (EjemplarEN ejemplar);
 
 
 void Destroy (int id);
+
+
+
+EjemplarEN BuscarId (int id);
 }
 }

@@ -204,5 +204,31 @@ public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.Bibliote
 
         return result;
 }
+public DesiderataEN BuscarId (int id)
+{
+        DesiderataEN desiderataEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                desiderataEN = (DesiderataEN)session.Get (typeof(DesiderataEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BibliotecaENIACGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in DesiderataCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return desiderataEN;
+}
 }
 }

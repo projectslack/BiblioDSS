@@ -32,7 +32,7 @@ public IObraCAD get_IObraCAD ()
         return this._IObraCAD;
 }
 
-public string New_ (string p_Isbn, string p_nombre, short p_paginas, System.Collections.Generic.IList<string> p_escrita, System.Collections.Generic.IList<string> p_tematica, short p_anyo, string p_imagen)
+public string New_ (string p_Isbn, string p_nombre, short p_paginas, System.Collections.Generic.IList<string> p_escrita, System.Collections.Generic.IList<string> p_tematica, short p_anyo, string p_imagen, bool p_reservada)
 {
         ObraEN obraEN = null;
         string oid;
@@ -77,13 +77,15 @@ public string New_ (string p_Isbn, string p_nombre, short p_paginas, System.Coll
 
         obraEN.Imagen = p_imagen;
 
+        obraEN.Reservada = p_reservada;
+
         //Call to ObraCAD
 
         oid = _IObraCAD.New_ (obraEN);
         return oid;
 }
 
-public void Modify (string p_Obra_OID, string p_nombre, short p_paginas, short p_anyo, string p_imagen)
+public void Modify (string p_Obra_OID, string p_nombre, short p_paginas, short p_anyo, string p_imagen, bool p_reservada)
 {
         ObraEN obraEN = null;
 
@@ -94,6 +96,7 @@ public void Modify (string p_Obra_OID, string p_nombre, short p_paginas, short p
         obraEN.Paginas = p_paginas;
         obraEN.Anyo = p_anyo;
         obraEN.Imagen = p_imagen;
+        obraEN.Reservada = p_reservada;
         //Call to ObraCAD
 
         _IObraCAD.Modify (obraEN);

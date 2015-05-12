@@ -17,5 +17,8 @@ void Destroy (string idReserva);
 
 
 System.Collections.Generic.IList<ReservaEN> ListaReservas (int first, int size);
+
+
+ReservaEN BuscarId (string idReserva);
 }
 }

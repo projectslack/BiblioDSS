@@ -83,5 +83,12 @@ public System.Collections.Generic.IList<ReservaEN> ListaReservas (int first, int
         list = _IReservaCAD.ListaReservas (first, size);
         return list;
 }
+public ReservaEN BuscarId (string idReserva)
+{
+        ReservaEN reservaEN = null;
+
+        reservaEN = _IReservaCAD.BuscarId (idReserva);
+        return reservaEN;
+}
 }
 }

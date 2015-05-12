@@ -20,5 +20,8 @@ System.Collections.Generic.IList<DesiderataEN> ListaDesideratas (int first, int 
 
 
 System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.DesiderataEN> ListaDesideratasPendientes (bool aceptada);
+
+
+DesiderataEN BuscarId (int id);
 }
 }
