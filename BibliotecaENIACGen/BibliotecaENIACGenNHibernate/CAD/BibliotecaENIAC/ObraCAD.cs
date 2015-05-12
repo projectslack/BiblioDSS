@@ -22,7 +22,6 @@ public ObraCAD(ISession sessionAux) : base (sessionAux)
 }
 
 
-
 public ObraEN ReadOIDDefault (string Isbn)
 {
         ObraEN obraEN = null;
@@ -210,14 +209,15 @@ public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.Bibliote
         System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> result;
         try
         {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM ObraEN self where FROM ObraEN";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("ObraENbuscaPorNombreHQL");
-                query.SetParameter ("nombre", nombre);
+            SessionInitializeTransaction();
+            String sql = @"FROM ObraEN where nombre like'%" + nombre + "%'";
+            //String sql = @"SELECT * FROM ObraEN";// p WHERE p.autor = autor";
+            IQuery query = session.CreateQuery(sql);
+            //IQuery oquery = (IQuery)session.GetNamedQuery("ObraENbuscaPorAutorHQL");
+            //query.SetParameter("autor", autor);
 
-                result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN>();
-                SessionCommit ();
+            result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN>();
+            SessionCommit();
         }
 
         catch (Exception ex) {
@@ -237,63 +237,90 @@ public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.Bibliote
 }
 public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> BuscaPorAutor (string autor)
 {
-        System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> result;
-        try
+    System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> result;
+    System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> autores;
+    System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> tematicas;
+    int i = 0;
+    int j = 0;
+    try
+    {
+        SessionInitializeTransaction();
+        String sql = @"FROM ObraEN o as o inner join o.Isbn as i with i.nombre like '%Cer%'";
+        //String sql = @"SELECT * FROM ObraEN";// p WHERE p.autor = autor";
+        IQuery query = session.CreateQuery(sql);
+        //IQuery oquery = (IQuery)session.GetNamedQuery("ObraENbuscaPorAutorHQL");
+        //query.SetParameter("autor", autor);
+
+        result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN>();
+        for (i = 0; i < result.Count; i++)
         {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM ObraEN self where FROM ObraEN";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("ObraENbuscaPorAutorHQL");
-                query.SetParameter ("autor", autor);
+            
+            //bloque de insertar los actores en las obras
+            
+            sql = @"FROM AutorEN a as a inner join a.nombre as i with i.Isbn ='" + result[i].Isbn + "'";
+            IQuery queryAutores = session.CreateQuery(sql);
+            autores = queryAutores.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN>();
 
-                result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN>();
-                SessionCommit ();
+            //bloque de insertar la tematica en las obras
+            sql = @"FROM TematicaEN t as t inner join t.nombre as i with i.Isbn =" + result[i].Isbn + "";
+            IQuery queryTematicas = session.CreateQuery(sql);
+            tematicas = queryTematicas.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN>();
+
+            result[0].Escrita = autores;
+            result[i].Tematica = tematicas;
         }
+            
+        
+        SessionCommit();
+    }
 
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is BibliotecaENIACGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in ObraCAD.", ex);
-        }
+    catch (Exception ex)
+    {
+        SessionRollBack();
+        if (ex is BibliotecaENIACGenNHibernate.Exceptions.ModelException)
+            throw ex;
+        throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException("Error in ObraCAD.", ex);
+    }
 
 
-        finally
-        {
-                SessionClose ();
-        }
+    finally
+    {
+        SessionClose();
+    }
 
-        return result;
+    return result;
 }
 public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> BuscaPorTematica (string tema)
 {
-        System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> result;
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM ObraEN self where FROM ObraEN";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("ObraENbuscaPorTematicaHQL");
-                query.SetParameter ("tema", tema);
+    System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> result;
+    try
+    {
+        SessionInitializeTransaction();
+        String sql = @"FROM ObraEN o as o inner join o.Isbn as i with i.nombre like'%" + tema + "%'";
+        //String sql = @"SELECT * FROM ObraEN";// p WHERE p.autor = autor";
+        IQuery query = session.CreateQuery(sql);
+        //IQuery oquery = (IQuery)session.GetNamedQuery("ObraENbuscaPorAutorHQL");
+        //query.SetParameter("autor", autor);
 
-                result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN>();
-                SessionCommit ();
-        }
+        result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN>();
+        SessionCommit();
+    }
 
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is BibliotecaENIACGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException ("Error in ObraCAD.", ex);
-        }
+    catch (Exception ex)
+    {
+        SessionRollBack();
+        if (ex is BibliotecaENIACGenNHibernate.Exceptions.ModelException)
+            throw ex;
+        throw new BibliotecaENIACGenNHibernate.Exceptions.DataLayerException("Error in ObraCAD.", ex);
+    }
 
 
-        finally
-        {
-                SessionClose ();
-        }
+    finally
+    {
+        SessionClose();
+    }
 
-        return result;
+    return result;
 }
 }
 }
