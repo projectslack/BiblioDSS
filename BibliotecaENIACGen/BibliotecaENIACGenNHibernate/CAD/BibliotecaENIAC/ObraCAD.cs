@@ -207,6 +207,7 @@ public ObraEN BuscaPorId (string Isbn)
 public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> BuscaPorNombre (string nombre)
 {
         System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> result;
+        int i = 0;
         try
         {
             SessionInitializeTransaction();
@@ -218,6 +219,15 @@ public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.Bibliote
 
             result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN>();
             SessionCommit();
+            Console.WriteLine(result);
+            for (i = 0; i < result.Count; i++)
+            {
+                Console.WriteLine(result[i].Escrita.Count);
+                Console.WriteLine(result[i].Ejemplar.Count);
+                Console.WriteLine(result[i].Tematica.Count);
+            }
+                
+            
         }
 
         catch (Exception ex) {
@@ -240,24 +250,36 @@ public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.Bibliote
     System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> result;
     System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN> autores;
     System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN> tematicas;
+    System.Collections.Generic.IList<Object> aux;
+    
     int i = 0;
     int j = 0;
+    bool esta = false;
     try
     {
         SessionInitializeTransaction();
-        String sql = @"FROM ObraEN o as o inner join o.Isbn as i with i.nombre like '%Cer%'";
+        //String sql = @"Select o.Isbn, o.Nombre, o.Paginas, o.Anyo, o.Imagen From ObraEN o inner join o.Escrita as e where e like '%" + autor + "%' ";
         //String sql = @"SELECT * FROM ObraEN";// p WHERE p.autor = autor";
-        IQuery query = session.CreateQuery(sql);
+        //IQuery query = session.CreateQuery(sql);
         //IQuery oquery = (IQuery)session.GetNamedQuery("ObraENbuscaPorAutorHQL");
         //query.SetParameter("autor", autor);
 
-        result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN>();
+        //aux = query.List<Object>();
+
+
+        String sql = @"FROM ObraEN o as o inner join o.Isbn as i with i.nombre like'%" + autor + "%'";
+        //String sql = @"SELECT * FROM ObraEN";// p WHERE p.autor = autor";
+        IQuery query = session.CreateQuery(sql);
+       result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN>();
+
+       Console.WriteLine(result);
+      
         for (i = 0; i < result.Count; i++)
         {
             
             //bloque de insertar los actores en las obras
             
-            sql = @"FROM AutorEN a as a inner join a.nombre as i with i.Isbn ='" + result[i].Isbn + "'";
+           /* sql = @"FROM AutorEN a as a inner join  a.nombre as i with i.Isbn ='" + result[i].Isbn + "'";
             IQuery queryAutores = session.CreateQuery(sql);
             autores = queryAutores.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.AutorEN>();
 
@@ -266,8 +288,28 @@ public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.Bibliote
             IQuery queryTematicas = session.CreateQuery(sql);
             tematicas = queryTematicas.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.TematicaEN>();
 
-            result[0].Escrita = autores;
-            result[i].Tematica = tematicas;
+            result[i].Escrita = autores;
+            result[i].Tematica = tematicas;*/
+            
+            for (j = 0; j < result[i].Escrita.Count ; j++)
+            {
+                
+                if (result[i].Escrita[j].Nombre.ToString().Contains(autor))
+                {
+
+                    Console.WriteLine(result[i].Tematica.Count);
+                    Console.WriteLine(result[i].Ejemplar.Count);
+                    esta = true;
+                }
+                
+                    
+            }
+            if (esta == false)
+            {
+                result.RemoveAt(i);
+                i--;
+            }
+            esta = false;
         }
             
         
@@ -287,22 +329,53 @@ public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.Bibliote
     {
         SessionClose();
     }
-
+    
     return result;
 }
 public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> BuscaPorTematica (string tema)
 {
     System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> result;
+
+
+    int i = 0;
+    int j = 0;
+    bool esta = false;
     try
     {
         SessionInitializeTransaction();
-        String sql = @"FROM ObraEN o as o inner join o.Isbn as i with i.nombre like'%" + tema + "%'";
-        //String sql = @"SELECT * FROM ObraEN";// p WHERE p.autor = autor";
-        IQuery query = session.CreateQuery(sql);
-        //IQuery oquery = (IQuery)session.GetNamedQuery("ObraENbuscaPorAutorHQL");
-        //query.SetParameter("autor", autor);
+       
 
+
+        String sql = @"FROM ObraEN o as o inner join o.Isbn as i with i.nombre like'%" + tema + "%'";
+        IQuery query = session.CreateQuery(sql);
         result = query.List<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN>();
+
+        Console.WriteLine(result);
+
+        for (i = 0; i < result.Count; i++)
+        {
+
+            for (j = 0; j < result[i].Tematica.Count; j++)
+            {
+
+                if (result[i].Tematica[j].Nombre.ToString().Contains(tema))
+                {
+                    Console.WriteLine(result[i].Escrita.Count);
+                    Console.WriteLine(result[i].Ejemplar.Count);
+                    esta = true;
+                }
+
+
+            }
+            if (esta == false)
+            {
+                result.RemoveAt(i);
+                i--;
+            }
+            esta = false;
+        }
+
+
         SessionCommit();
     }
 
@@ -320,7 +393,7 @@ public System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.Bibliote
         SessionClose();
     }
 
-    return result;
+    return result; 
 }
 }
 }

@@ -7,16 +7,17 @@ using System.Web.UI.WebControls;
 using BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC;
 using BibliotecaENIACGenNHibernate.CAD.BibliotecaENIAC;
 using BibliotecaENIACGenNHibernate.CEN.BibliotecaENIAC;
+
 namespace InterfazV2
 {
     public partial class _Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
+            
             ObraCEN obra = new ObraCEN();
-            obra.New_("Patterns of Enterprise Application Architecture", 5, "Martin Fowler", "Software", 589, true, true);
-            obra.New_("UML Distilled: A Brief Guide to the Standard Object Modeling Language", 2, "Martin Fowler", "Software", 345, false, false);
+            
+            /*obra.New_("UML Distilled: A Brief Guide to the Standard Object Modeling Language", 2, "Martin Fowler", "Software", 345, false, false);
             obra.New_("Refactoring: Improving the Design of Existing Code", 3, "Martin Fowler", "Software", 297, true, false);
             obra.New_("Planning Extreme Programming", 4, "Martin Fowler", "Software", 365, false, false);
             obra.New_("Domain-Specific Languages", 1, "Martin Fowler", "Software", 286, true, false);
@@ -29,15 +30,9 @@ namespace InterfazV2
         {
            
             ObraCEN obra =  new ObraCEN();
-            //obra.New_("Patterns of Enterprise Application Architecture", 5, "Martin Fowler", "Software", 589, true, true);
-            //obra.New_("UML Distilled: A Brief Guide to the Standard Object Modeling Language", 2, "Martin Fowler", "Software", 345, false, false);
-            //obra.New_("Refactoring: Improving the Design of Existing Code", 3, "Martin Fowler", "Software", 297, true, false);
-            //obra.New_("Planning Extreme Programming", 4, "Martin Fowler", "Software", 365, false, false);
-            //obra.New_("Domain-Specific Languages", 1, "Martin Fowler", "Software", 286, true, false);
-            //obra.New_("NoSQL Distilled", 1, "Martin Fowler", "Software", 381, false, false);
-            //obra.New_("Agile and iterative development: a manager`s guide", 1, "Craig Larman", "Software", 369, true, false);
-            //obra.New_("Applying UML and patterns: an introduction to object-oriented analysis and design and iterative development", 4, "Craig Larman", "Software", 279, false, false); 
+            
             int i = 0;
+            int ejemplaresDisp = 0;
             string busqueda = textBox.Text;
             System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> listFiltradaPorAutor = null;
             listFiltradaPorAutor = obra.BuscaPorAutor(busqueda);
@@ -60,10 +55,25 @@ namespace InterfazV2
                 //Panel2.Controls.Add(new LiteralControl("<br><br><br><br><br><br><br><br><br><br>"));
                 Panel2.Controls.Add(new LiteralControl("<br><center><b><u> Resultado de la búsqueda: </u></center><br><br>"));
 
-
+               
                 
                 foreach (ObraEN obras in listFiltradaPorAutor)
                 {
+                    //IMAGEN
+
+                    Label img = new Label();
+                    if (obras.Imagen.ToString().Equals("0"))
+                    {
+                        img.Text = "Imagen No Disponible";
+                    }
+                    else
+                    {
+
+                        img.Text = "<img src ='" + obras.Imagen + "' width='100' height='100'>";
+                        Panel2.Controls.Add(img);
+                        Panel2.Controls.Add(new LiteralControl("<br>"));
+                    }
+
                     //TITULO
                     Label lNom = new Label();
                     lNom.Text = "Título:";
@@ -81,23 +91,28 @@ namespace InterfazV2
                     Panel2.Controls.Add(lAut);
                     Panel2.Controls.Add(new LiteralControl("&nbsp"));
                     Label lAutor = new Label();
-                    //lAutor.Text = obras.Escrita[0].Nombre;
-                   /* for (i = 0; i < obras.Escrita.Count; i++)
+                    if (obras.Escrita != null)
                     {
-                        if (i != obras.Escrita.Count - 1)
+                        for (i = 0; i < obras.Escrita.Count; i++)
                         {
-                            lAutor.Text += obras.Escrita[i].Nombre + ",";
-                            
+                            if (i != obras.Escrita.Count -1)
+                            {
+                                lAutor.Text += obras.Escrita[i].Nombre + ",";
+
+                            }
+                            else
+                            {
+                                lAutor.Text += obras.Escrita[i].Nombre;
+
+                            }
                         }
-                        else
-                        {
-                            lAutor.Text += obras.Escrita[i].Nombre;
-                            
-                        }
-                    }*/
+                    }
+                    else
+                    {
+                        lAutor.Text = "Desconocido";
+                    }
+                  
                     Panel2.Controls.Add(lAutor);
-                    
-                    
 
                     Panel2.Controls.Add(new LiteralControl("<br>"));
 
@@ -108,20 +123,28 @@ namespace InterfazV2
                     Panel2.Controls.Add(lTem);
                     Panel2.Controls.Add(new LiteralControl("&nbsp"));
                     Label lTematica = new Label();
-                    /*for (i = 0; i < obras.Tematica.Count; i++)
+                    if (obras.Tematica != null)
                     {
-                        if (i != obras.Tematica.Count-1)
+
+                        for (i = 0; i < obras.Tematica.Count; i++)
                         {
-                            lTematica.Text += obras.Tematica[i].Nombre + ",";
-                            
+                            if (i != obras.Tematica.Count - 1)
+                            {
+                                lTematica.Text += obras.Tematica[i].Nombre + ",";
+
+                            }
+                            else
+                            {
+                                lTematica.Text += obras.Tematica[i].Nombre;
+
+                            }
                         }
-                        else
-                        {
-                            lTematica.Text += obras.Tematica[i].Nombre;
-                            
-                        }
-                    }*/
-                    lTematica.Text = obras.Tematica[2].Nombre;
+                    }
+                    else
+                    {
+                        lTematica.Text ="Sin tematica" ;
+                    }
+                   
                     Panel2.Controls.Add(lTematica);
                     Panel2.Controls.Add(new LiteralControl("<br>"));
 
@@ -131,19 +154,26 @@ namespace InterfazV2
                     Panel2.Controls.Add(lDis);
                     Panel2.Controls.Add(new LiteralControl("&nbsp"));
                     Label lDisponibilidad = new Label();
-                   /* if (obras.Prestado == true)
+                    for (i = 0; i < obras.Ejemplar.Count; i++)
+                    {
+                        if (obras.Ejemplar[i].Prestado != true)
+                        {
+                            ejemplaresDisp++;
+                        }
+                    }
+                    if (ejemplaresDisp == 0)
                     {
                         lDisponibilidad.Text = "No disponible";
                         Panel2.Controls.Add(lDisponibilidad);
                     }
                     else
                     {
-                        lDisponibilidad.Text = "Disponible";
+                        lDisponibilidad.Text = "Disponibles " + ejemplaresDisp + "/" + obras.Ejemplar.Count;
                         Panel2.Controls.Add(lDisponibilidad);
-                    }*/
+                    }
                     Panel2.Controls.Add(new LiteralControl("<br>"));
                     Panel2.Controls.Add(new LiteralControl("<br>"));
-
+                    ejemplaresDisp = 0;
                 }
                 
             }
@@ -151,9 +181,11 @@ namespace InterfazV2
 
         public void mostrarObrasN_click(object sender, EventArgs e)
         {
-            //throw new Exception("No implementado todavía...");
 
             ObraCEN obra = new ObraCEN();
+
+            int i = 0;
+            int ejemplaresDisp = 0;
             string busqueda = textBox.Text;
             System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> listFiltradaPorAutor = null;
             listFiltradaPorAutor = obra.BuscaPorNombre(busqueda);
@@ -176,9 +208,25 @@ namespace InterfazV2
                 //Panel2.Controls.Add(new LiteralControl("<br><br><br><br><br><br><br><br><br><br>"));
                 Panel2.Controls.Add(new LiteralControl("<br><center><b><u> Resultado de la búsqueda: </u></center><br><br>"));
 
-                
+
+
                 foreach (ObraEN obras in listFiltradaPorAutor)
                 {
+                    //IMAGEN
+
+                    Label img = new Label();
+                    if (obras.Imagen.ToString().Equals("0"))
+                    {
+                        img.Text = "Imagen No Disponible";
+                    }
+                    else
+                    {
+
+                        img.Text = "<img src ='" + obras.Imagen + "' width='100' height='100'>";
+                        Panel2.Controls.Add(img);
+                        Panel2.Controls.Add(new LiteralControl("<br>"));
+                    }
+
                     //TITULO
                     Label lNom = new Label();
                     lNom.Text = "Título:";
@@ -191,27 +239,66 @@ namespace InterfazV2
                     Panel2.Controls.Add(new LiteralControl("<br>"));
 
                     //AUTOR
-                    //AutorCEN autor = new AutorCEN();
-
                     Label lAut = new Label();
                     lAut.Text = "Autor:";
                     Panel2.Controls.Add(lAut);
                     Panel2.Controls.Add(new LiteralControl("&nbsp"));
                     Label lAutor = new Label();
-                    //lAutor.Text = obras.Autor;
+                    if (obras.Escrita != null)
+                    {
+                        for (i = 0; i < obras.Escrita.Count; i++)
+                        {
+                            if (i != obras.Escrita.Count - 1)
+                            {
+                                lAutor.Text += obras.Escrita[i].Nombre + ",";
+
+                            }
+                            else
+                            {
+                                lAutor.Text += obras.Escrita[i].Nombre;
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        lAutor.Text = "Desconocido";
+                    }
+
                     Panel2.Controls.Add(lAutor);
 
                     Panel2.Controls.Add(new LiteralControl("<br>"));
 
                     //TEMATICA
+                    i = 0;
                     Label lTem = new Label();
                     lTem.Text = "Temática:";
                     Panel2.Controls.Add(lTem);
                     Panel2.Controls.Add(new LiteralControl("&nbsp"));
                     Label lTematica = new Label();
-                    //lTematica.Text = obras.Tematica;
-                    Panel2.Controls.Add(lTematica);
+                    if (obras.Tematica != null)
+                    {
 
+                        for (i = 0; i < obras.Tematica.Count; i++)
+                        {
+                            if (i != obras.Tematica.Count - 1)
+                            {
+                                lTematica.Text += obras.Tematica[i].Nombre + ",";
+
+                            }
+                            else
+                            {
+                                lTematica.Text += obras.Tematica[i].Nombre;
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        lTematica.Text = "Sin tematica";
+                    }
+
+                    Panel2.Controls.Add(lTematica);
                     Panel2.Controls.Add(new LiteralControl("<br>"));
 
                     //DISPONIBILIDAD
@@ -220,29 +307,39 @@ namespace InterfazV2
                     Panel2.Controls.Add(lDis);
                     Panel2.Controls.Add(new LiteralControl("&nbsp"));
                     Label lDisponibilidad = new Label();
-                   /* if (obras.Prestado == true)
+                    for (i = 0; i < obras.Ejemplar.Count; i++)
+                    {
+                        if (obras.Ejemplar[i].Prestado != true)
+                        {
+                            ejemplaresDisp++;
+                        }
+                    }
+                    if (ejemplaresDisp == 0)
                     {
                         lDisponibilidad.Text = "No disponible";
                         Panel2.Controls.Add(lDisponibilidad);
                     }
                     else
                     {
-                        lDisponibilidad.Text = "Disponible";
+                        lDisponibilidad.Text = "Disponibles " + ejemplaresDisp + "/" + obras.Ejemplar.Count;
                         Panel2.Controls.Add(lDisponibilidad);
-                    }*/
+                    }
                     Panel2.Controls.Add(new LiteralControl("<br>"));
                     Panel2.Controls.Add(new LiteralControl("<br>"));
-
+                    ejemplaresDisp = 0;
                 }
+
+            } 
                 
-            }
+            
         }
 
         public void mostrarObrasT_click(object sender, EventArgs e)
         {
+             ObraCEN obra =  new ObraCEN();
             
-
-            ObraCEN obra = new ObraCEN();
+            int i = 0;
+            int ejemplaresDisp = 0;
             string busqueda = textBox.Text;
             System.Collections.Generic.IList<BibliotecaENIACGenNHibernate.EN.BibliotecaENIAC.ObraEN> listFiltradaPorAutor = null;
             listFiltradaPorAutor = obra.BuscaPorTematica(busqueda);
@@ -265,9 +362,25 @@ namespace InterfazV2
                 //Panel2.Controls.Add(new LiteralControl("<br><br><br><br><br><br><br><br><br><br>"));
                 Panel2.Controls.Add(new LiteralControl("<br><center><b><u> Resultado de la búsqueda: </u></center><br><br>"));
 
+               
                 
                 foreach (ObraEN obras in listFiltradaPorAutor)
                 {
+                    //IMAGEN
+
+                    Label img = new Label();
+                    if (obras.Imagen.ToString().Equals("0"))
+                    {
+                        img.Text = "Imagen No Disponible";
+                    }
+                    else
+                    {
+
+                        img.Text = "<img src ='" + obras.Imagen + "' width='100' height='100'>";
+                        Panel2.Controls.Add(img);
+                        Panel2.Controls.Add(new LiteralControl("<br>"));
+                    }
+
                     //TITULO
                     Label lNom = new Label();
                     lNom.Text = "Título:";
@@ -285,20 +398,61 @@ namespace InterfazV2
                     Panel2.Controls.Add(lAut);
                     Panel2.Controls.Add(new LiteralControl("&nbsp"));
                     Label lAutor = new Label();
-                    //lAutor.Text = obras.Escrita[0].Nombre;
+                    if (obras.Escrita != null)
+                    {
+                        for (i = 0; i < obras.Escrita.Count; i++)
+                        {
+                            if (i != obras.Escrita.Count -1)
+                            {
+                                lAutor.Text += obras.Escrita[i].Nombre + ",";
+
+                            }
+                            else
+                            {
+                                lAutor.Text += obras.Escrita[i].Nombre;
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        lAutor.Text = "Desconocido";
+                    }
+                  
                     Panel2.Controls.Add(lAutor);
 
                     Panel2.Controls.Add(new LiteralControl("<br>"));
 
                     //TEMATICA
+                    i = 0;
                     Label lTem = new Label();
                     lTem.Text = "Temática:";
                     Panel2.Controls.Add(lTem);
                     Panel2.Controls.Add(new LiteralControl("&nbsp"));
                     Label lTematica = new Label();
-                    lTematica.Text = obras.Tematica[0].Nombre;
-                    Panel2.Controls.Add(lTematica);
+                    if (obras.Tematica != null)
+                    {
 
+                        for (i = 0; i < obras.Tematica.Count; i++)
+                        {
+                            if (i != obras.Tematica.Count - 1)
+                            {
+                                lTematica.Text += obras.Tematica[i].Nombre + ",";
+
+                            }
+                            else
+                            {
+                                lTematica.Text += obras.Tematica[i].Nombre;
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        lTematica.Text ="Sin tematica" ;
+                    }
+                   
+                    Panel2.Controls.Add(lTematica);
                     Panel2.Controls.Add(new LiteralControl("<br>"));
 
                     //DISPONIBILIDAD
@@ -307,22 +461,33 @@ namespace InterfazV2
                     Panel2.Controls.Add(lDis);
                     Panel2.Controls.Add(new LiteralControl("&nbsp"));
                     Label lDisponibilidad = new Label();
-                    /*if (obras.Prestado == true)
+                    for (i = 0; i < obras.Ejemplar.Count; i++)
+                    {
+                        if (obras.Ejemplar[i].Prestado != true)
+                        {
+                            ejemplaresDisp++;
+                        }
+                    }
+                    if (ejemplaresDisp == 0)
                     {
                         lDisponibilidad.Text = "No disponible";
                         Panel2.Controls.Add(lDisponibilidad);
                     }
                     else
                     {
-                        lDisponibilidad.Text = "Disponible";
+                        lDisponibilidad.Text = "Disponibles " + ejemplaresDisp + "/" + obras.Ejemplar.Count;
                         Panel2.Controls.Add(lDisponibilidad);
-                    }*/
+                    }
                     Panel2.Controls.Add(new LiteralControl("<br>"));
                     Panel2.Controls.Add(new LiteralControl("<br>"));
-
+                    ejemplaresDisp = 0;
                 }
                 
             }
+
+            
+                
+            
         }
     }
 }
